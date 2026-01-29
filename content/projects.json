@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Example Project 1",
+    "description": "A sample project demonstrating the project card component. This could be a web application, library, or any other project you've worked on.",
+    "image": "/images/project-1.jpg",
+    "links": {
+      "website": "https://example.com",
+      "github": "https://github.com/example/project1"
+    },
+    "tags": ["web", "react", "typescript"]
+  },
+  {
+    "title": "Example Project 2",
+    "description": "Another example project showing how projects are displayed on the projects page. Projects can have images, descriptions, and multiple links.",
+    "logo": "/images/project-2-logo.png",
+    "links": {
+      "website": "https://example.com/project2",
+      "demo": "https://demo.example.com"
+    },
+    "tags": ["design", "ui"]
+  },
+  {
+    "title": "Example Project 3",
+    "description": "A third example project. You can include any relevant information about your projects here.",
+    "links": {
+      "github": "https://github.com/example/project3"
+    },
+    "tags": ["open-source", "tool"]
+  }
+]

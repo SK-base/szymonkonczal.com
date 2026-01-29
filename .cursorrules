@@ -1,0 +1,55 @@
+# Cursor Rules for Personal Homepage Blog
+
+## Project Structure
+- Use Next.js App Router with TypeScript
+- Content lives in `content/` directory (notes, articles, projects.json)
+- Components are organized by purpose: `layout/`, `blog/`, `article-components/`, `ui/`
+- Utilities and types are in `lib/` directory
+- Custom article components can be placed in `articles/[slug]/index.tsx`
+
+## Code Style
+- Use TypeScript for all files
+- Use functional components with TypeScript interfaces
+- Prefer named exports over default exports
+- Use Zod schemas for runtime validation
+- Use Tailwind CSS for styling with custom color palette
+- Use shadcn/ui components as base UI primitives
+
+## Content Management
+- Notes: Short, frequent posts in `content/notes/*.mdx`
+- Articles: Longer pieces in `content/articles/*.mdx` with optional custom components
+- Projects: JSON file at `content/projects.json`
+- All MDX files must have frontmatter validated by Zod schemas
+- Frontmatter fields: title (string), date (string), tags (string[]), featuredImage (optional string)
+
+## Component Patterns
+- Blog components (NoteCard, ArticleCard, etc.) should accept data props and be reusable
+- Article components (Blockquote, CodeBlock, Separator) support customization via props
+- Use `cn()` utility for conditional className merging
+- Prefer composition over configuration
+
+## Styling Guidelines
+- Use custom color palette defined in `app/globals.css`
+- Playfair Display for headings (serif), Manrope for body (sans-serif)
+- Match Trent Walton aesthetic: clean, minimal, readable
+- Use semantic HTML and proper accessibility attributes
+
+## File Naming
+- Components: PascalCase (e.g., `NoteCard.tsx`)
+- Utilities: camelCase (e.g., `reading-time.ts`)
+- Pages: Next.js conventions (e.g., `page.tsx`, `[slug]/page.tsx`)
+- Content: kebab-case for MDX files (e.g., `my-note.mdx`)
+
+## Best Practices
+- Always validate frontmatter with Zod schemas
+- Use `generateStaticParams` for static pages
+- Prefer static generation over server-side rendering
+- Handle missing content gracefully (notFound())
+- Use Next.js Image component for images
+- Calculate reading time for all content
+
+## AI Assistance Guidelines
+- When adding new content, ensure frontmatter matches schema
+- When creating custom article components, check if they should be in `articles/[slug]/` or imported in MDX
+- Maintain consistent styling and component patterns
+- Keep components focused and reusable

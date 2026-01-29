@@ -1,0 +1,3 @@
+# Custom article components
+# Add one directory per article slug, e.g. my-article/index.tsx
+# Then register it in lib/article-components.ts
