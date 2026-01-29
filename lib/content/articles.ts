@@ -87,6 +87,7 @@ export function getAllArticleSlugs(): string[] {
     .map((name) => name.replace(/\.mdx$/, ""));
 }
 
+// This isn't used anywhere yet. It will be useful on tags page.
 export function getAllTags(): string[] {
   const articles = getAllArticles();
   const tagSet = new Set<string>();
