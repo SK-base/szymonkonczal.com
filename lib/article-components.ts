@@ -1,4 +1,5 @@
 import type React from "react";
+import CustomLayoutDemo from "@/articles/custom-layout-demo/index";
 
 /**
  * Registry of custom article components. Add a static import and entry here
@@ -11,7 +12,7 @@ import type React from "react";
  *   ... and add "my-article": MyArticle to the record below.
  */
 const CUSTOM_ARTICLE_COMPONENTS: Record<string, React.ComponentType> = {
-  // e.g. "example-article-1": ExampleArticle1,
+  "custom-layout-demo": CustomLayoutDemo,
 };
 
 export const CUSTOM_ARTICLE_SLUGS = Object.keys(CUSTOM_ARTICLE_COMPONENTS);
