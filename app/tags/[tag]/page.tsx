@@ -14,7 +14,7 @@ const ITEMS_PER_PAGE = 10;
 
 interface TagPageProps {
   params: Promise<{ tag: string }>;
-  searchParams: { page?: string; type?: string };
+  searchParams: Promise<{ page?: string; type?: string }>;
 }
 
 export async function generateStaticParams() {
@@ -24,8 +24,9 @@ export async function generateStaticParams() {
 
 export default async function TagPage({ params, searchParams }: TagPageProps) {
   const { tag } = await params;
-  const currentPage = Number(searchParams.page) || 1;
-  const type = searchParams.type || "all"; // 'all', 'notes', 'articles'
+  const resolved = await searchParams;
+  const currentPage = Number(resolved.page) || 1;
+  const type = resolved.type || "all"; // 'all', 'notes', 'articles'
 
   const notes = getNotesByTag(tag);
   const articles = getArticlesByTag(tag);

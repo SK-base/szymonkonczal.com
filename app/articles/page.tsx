@@ -5,11 +5,12 @@ import { getAllArticles } from "@/lib/content/articles";
 const ITEMS_PER_PAGE = 10;
 
 interface ArticlesPageProps {
-  searchParams: { page?: string };
+  searchParams: Promise<{ page?: string }>;
 }
 
-export default function ArticlesPage({ searchParams }: ArticlesPageProps) {
-  const currentPage = Number(searchParams.page) || 1;
+export default async function ArticlesPage({ searchParams }: ArticlesPageProps) {
+  const resolved = await searchParams;
+  const currentPage = Number(resolved.page) || 1;
   const allArticles = getAllArticles();
   const totalPages = Math.ceil(allArticles.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;

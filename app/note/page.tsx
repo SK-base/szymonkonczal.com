@@ -5,11 +5,12 @@ import { getAllNotes } from "@/lib/content/notes";
 const ITEMS_PER_PAGE = 10;
 
 interface NotesPageProps {
-  searchParams: { page?: string };
+  searchParams: Promise<{ page?: string }>;
 }
 
-export default function NotesPage({ searchParams }: NotesPageProps) {
-  const currentPage = Number(searchParams.page) || 1;
+export default async function NotesPage({ searchParams }: NotesPageProps) {
+  const resolved = await searchParams;
+  const currentPage = Number(resolved.page) || 1;
   const allNotes = getAllNotes();
   const totalPages = Math.ceil(allNotes.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
