@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function AboutPage() {
   return (
     <div className="container mx-auto px-4 py-12">
@@ -14,15 +12,15 @@ export default function AboutPage() {
           <div className="flex-1">
             <div className="prose prose-lg max-w-none">
               <p className="text-lg text-muted-foreground mb-4">
-                Welcome to my personal homepage. I'm a developer, writer, and
+                Welcome to my personal homepage. I&apos;m a developer, writer, and
                 creator passionate about building meaningful things on the web.
               </p>
               <p className="text-muted-foreground mb-4">
-                Here you'll find my notes, articles, and projects. I write about
+                Here you&apos;ll find my notes, articles, and projects. I write about
                 web development, design, and whatever else catches my interest.
               </p>
               <p className="text-muted-foreground">
-                Feel free to explore and reach out if you'd like to connect.
+                Feel free to explore and reach out if you&apos;d like to connect.
               </p>
             </div>
           </div>

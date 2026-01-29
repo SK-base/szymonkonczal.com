@@ -6,6 +6,11 @@ interface CodeBlockProps extends React.HTMLAttributes<HTMLElement> {
   language?: string;
 }
 
+type CodeChildProps = {
+  children?: React.ReactNode;
+  className?: string;
+};
+
 export function CodeBlock({
   className,
   inline = false,
@@ -33,7 +38,9 @@ export function CodeBlock({
   // next-mdx-remote renders fenced/indented blocks as <pre><code className="language-...">...</code></pre>.
   // When `CodeBlock` is used as the `pre` component, `children` will be that inner element.
   const codeChildProps =
-    onlyChild && React.isValidElement(onlyChild) ? (onlyChild.props as any) : null;
+    onlyChild && React.isValidElement(onlyChild)
+      ? (onlyChild as React.ReactElement<CodeChildProps>).props
+      : null;
 
   const resolvedLanguage =
     language ??
