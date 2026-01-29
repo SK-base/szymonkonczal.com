@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -23,22 +23,34 @@ export function Pagination({
     return `${basePath}?page=${page}`;
   };
 
+  const isFirstPage = currentPage === 1;
+  const isLastPage = currentPage === totalPages;
+
   return (
     <nav
       className={cn("flex items-center justify-center gap-2 mt-8", className)}
       aria-label="Pagination"
     >
-      <Button
-        variant="outline"
-        size="sm"
-        asChild
-        disabled={currentPage === 1}
-      >
-        <Link href={getPageUrl(currentPage - 1)}>
+      {isFirstPage ? (
+        <span
+          className={cn(
+            buttonVariants({ variant: "outline", size: "sm" }),
+            "opacity-50 cursor-not-allowed pointer-events-none"
+          )}
+          aria-disabled="true"
+          aria-label="Previous (disabled)"
+        >
           <ChevronLeft className="h-4 w-4" />
           Previous
-        </Link>
-      </Button>
+        </span>
+      ) : (
+        <Button variant="outline" size="sm" asChild>
+          <Link href={getPageUrl(currentPage - 1)}>
+            <ChevronLeft className="h-4 w-4" />
+            Previous
+          </Link>
+        </Button>
+      )}
 
       <div className="flex items-center gap-1">
         {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
@@ -64,17 +76,26 @@ export function Pagination({
         })}
       </div>
 
-      <Button
-        variant="outline"
-        size="sm"
-        asChild
-        disabled={currentPage === totalPages}
-      >
-        <Link href={getPageUrl(currentPage + 1)}>
+      {isLastPage ? (
+        <span
+          className={cn(
+            buttonVariants({ variant: "outline", size: "sm" }),
+            "opacity-50 cursor-not-allowed pointer-events-none"
+          )}
+          aria-disabled="true"
+          aria-label="Next (disabled)"
+        >
           Next
           <ChevronRight className="h-4 w-4" />
-        </Link>
-      </Button>
+        </span>
+      ) : (
+        <Button variant="outline" size="sm" asChild>
+          <Link href={getPageUrl(currentPage + 1)}>
+            Next
+            <ChevronRight className="h-4 w-4" />
+          </Link>
+        </Button>
+      )}
     </nav>
   );
 }
