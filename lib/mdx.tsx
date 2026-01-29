@@ -5,7 +5,10 @@ import { Separator } from "@/components/article-components/Separator";
 
 const components = {
   blockquote: Blockquote,
-  code: CodeBlock,
+  pre: CodeBlock,
+  code: (props: React.HTMLAttributes<HTMLElement>) => (
+    <CodeBlock inline {...props} />
+  ),
   hr: Separator,
   // Standard HTML elements
   h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
