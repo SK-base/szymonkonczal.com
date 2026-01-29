@@ -1,8 +1,9 @@
 import { z } from "zod";
+import { parseableDateSchema } from "./date";
 
 export const ArticleFrontmatterSchema = z.object({
   title: z.string(),
-  date: z.string(),
+  date: parseableDateSchema,
   tags: z.array(z.string()),
   featuredImage: z.string().optional(),
 });
