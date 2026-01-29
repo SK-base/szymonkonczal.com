@@ -40,9 +40,7 @@ export default async function NotePage({ params }: NotePageProps) {
           )}
         </header>
 
-        <div className="prose prose-lg max-w-none">
-          <MDXContent source={note.content} />
-        </div>
+        <MDXContent source={note.content} />
       </article>
     </div>
   );

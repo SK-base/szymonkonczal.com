@@ -60,9 +60,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           )}
         </header>
 
-        <div className="prose prose-lg max-w-none">
-          <MDXContent source={article.content} />
-        </div>
+        <MDXContent source={article.content} />
       </article>
     </div>
   );
