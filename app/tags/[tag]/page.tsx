@@ -84,9 +84,9 @@ export default async function TagPage({ params, searchParams }: TagPageProps) {
         <div className="grid gap-6 md:grid-cols-1 mb-8">
           {paginatedItems.map((item) => {
             if (item.type === "note") {
-              return <NoteCard key={item.slug} note={item.data} />;
+              return <NoteCard key={`note-${item.slug}`} note={item.data} />;
             } else {
-              return <ArticleCard key={item.slug} article={item.data} />;
+              return <ArticleCard key={`article-${item.slug}`} article={item.data} />;
             }
           })}
         </div>
