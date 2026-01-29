@@ -1,3 +1,4 @@
+import { createElement } from "react";
 import { notFound } from "next/navigation";
 import { format } from "date-fns";
 import { MDXContent } from "@/lib/mdx";
@@ -6,6 +7,7 @@ import {
   getArticleBySlug,
   getAllArticleSlugs,
 } from "@/lib/content/articles";
+import { getCustomArticleComponent } from "@/lib/article-components";
 
 interface ArticlePageProps {
   params: Promise<{ slug: string }>;
@@ -24,26 +26,13 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     notFound();
   }
 
-  // Try to load custom component if it exists
-  let CustomComponent: React.ComponentType | null = null;
-  if (article.hasCustomComponent) {
-    try {
-      // Use dynamic import with error handling
-      const componentModule = await import(`@/articles/${slug}/index`).catch(() => null);
-      if (componentModule && componentModule.default) {
-        CustomComponent = componentModule.default;
-      }
-    } catch {
-      // Custom component doesn't exist or failed to load, fall back to MDX
-      console.warn(`Custom component for article ${slug} not found, using MDX`);
-    }
-  }
+  const CustomArticleLayout = getCustomArticleComponent(slug);
 
-  if (CustomComponent) {
+  if (CustomArticleLayout) {
     return (
       <div className="container mx-auto px-4 py-12">
         <article className="max-w-4xl mx-auto">
-          <CustomComponent />
+          {createElement(CustomArticleLayout)}
         </article>
       </div>
     );

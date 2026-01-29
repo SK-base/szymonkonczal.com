@@ -67,10 +67,9 @@ This is a personal homepage/blog built with Next.js, featuring notes, articles, 
 4. If custom component exists, it will be used instead of MDX rendering
 
 ### Custom Article Components
-- Place custom React components in `articles/[slug]/index.tsx`
-- Component receives article data via props (can be accessed via `getArticleBySlug`)
-- Allows full customization: colors, layout, custom React components
-- Falls back to MDX rendering if component doesn't exist
+1. Create `articles/[slug]/index.tsx` with your custom React component (default export).
+2. Register it in `lib/article-components.ts`: add a static import and an entry in `CUSTOM_ARTICLE_COMPONENTS`, e.g. `"my-article": MyArticle`.
+3. The article page will use the custom component when present; otherwise it falls back to MDX. Webpack cannot resolve dynamic import paths like `` `@/articles/${slug}/index` ``, so the static registry in `lib/article-components.ts` is required.
 
 ### Adding a Project
 1. Edit `content/projects.json`

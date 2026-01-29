@@ -3,9 +3,9 @@ import path from "path";
 import matter from "gray-matter";
 import { ArticleFrontmatterSchema, type Article } from "@/lib/types/article";
 import { calculateReadingTime } from "@/lib/utils/reading-time";
+import { CUSTOM_ARTICLE_SLUGS } from "@/lib/article-components";
 
 const articlesDirectory = path.join(process.cwd(), "content/articles");
-const customArticlesDirectory = path.join(process.cwd(), "articles");
 
 export function getAllArticles(): Article[] {
   if (!fs.existsSync(articlesDirectory)) {
@@ -23,10 +23,7 @@ export function getAllArticles(): Article[] {
 
       const frontmatter = ArticleFrontmatterSchema.parse(data);
       const readingTime = calculateReadingTime(content);
-      
-      // Check if custom component exists
-      const customComponentPath = path.join(customArticlesDirectory, slug, "index.tsx");
-      const hasCustomComponent = fs.existsSync(customComponentPath);
+      const hasCustomComponent = CUSTOM_ARTICLE_SLUGS.includes(slug);
 
       return {
         slug,
@@ -57,10 +54,7 @@ export function getArticleBySlug(slug: string): Article | null {
 
   const frontmatter = ArticleFrontmatterSchema.parse(data);
   const readingTime = calculateReadingTime(content);
-  
-  // Check if custom component exists
-  const customComponentPath = path.join(customArticlesDirectory, slug, "index.tsx");
-  const hasCustomComponent = fs.existsSync(customComponentPath);
+  const hasCustomComponent = CUSTOM_ARTICLE_SLUGS.includes(slug);
 
   return {
     slug,
