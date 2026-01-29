@@ -25,7 +25,8 @@ export async function generateStaticParams() {
 export default async function TagPage({ params, searchParams }: TagPageProps) {
   const { tag } = await params;
   const resolved = await searchParams;
-  const currentPage = Number(resolved.page) || 1;
+  const rawPage = Number(resolved.page) || 1;
+  const currentPage = Math.max(1, Math.floor(rawPage));
   const type = resolved.type || "all"; // 'all', 'notes', 'articles'
 
   const notes = getNotesByTag(tag);

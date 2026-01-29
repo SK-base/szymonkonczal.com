@@ -10,7 +10,8 @@ interface ArticlesPageProps {
 
 export default async function ArticlesPage({ searchParams }: ArticlesPageProps) {
   const resolved = await searchParams;
-  const currentPage = Number(resolved.page) || 1;
+  const rawPage = Number(resolved.page) || 1;
+  const currentPage = Math.max(1, Math.floor(rawPage));
   const allArticles = getAllArticles();
   const totalPages = Math.ceil(allArticles.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;

@@ -10,7 +10,8 @@ interface NotesPageProps {
 
 export default async function NotesPage({ searchParams }: NotesPageProps) {
   const resolved = await searchParams;
-  const currentPage = Number(resolved.page) || 1;
+  const rawPage = Number(resolved.page) || 1;
+  const currentPage = Math.max(1, Math.floor(rawPage));
   const allNotes = getAllNotes();
   const totalPages = Math.ceil(allNotes.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
