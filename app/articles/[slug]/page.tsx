@@ -33,7 +33,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       if (componentModule && componentModule.default) {
         CustomComponent = componentModule.default;
       }
-    } catch (error) {
+    } catch {
       // Custom component doesn't exist or failed to load, fall back to MDX
       console.warn(`Custom component for article ${slug} not found, using MDX`);
     }

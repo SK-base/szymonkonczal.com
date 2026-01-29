@@ -1,11 +1,15 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
+import type { MDXRemoteProps } from "next-mdx-remote/rsc";
 import { Blockquote } from "@/components/article-components/Blockquote";
 import { CodeBlock } from "@/components/article-components/CodeBlock";
 import { Separator } from "@/components/article-components/Separator";
 
 const components = {
   blockquote: Blockquote,
-  code: CodeBlock,
+  pre: CodeBlock,
+  code: (props: React.HTMLAttributes<HTMLElement>) => (
+    <CodeBlock inline {...props} />
+  ),
   hr: Separator,
   // Standard HTML elements
   h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -39,7 +43,7 @@ const components = {
 
 interface MDXContentProps {
   source: string;
-  components?: Record<string, React.ComponentType<any>>;
+  components?: MDXRemoteProps["components"];
 }
 
 export function MDXContent({ source, components: customComponents }: MDXContentProps) {

@@ -6,6 +6,8 @@ import {
   getNotesByTag,
   getArticlesByTag,
 } from "@/lib/content/tags";
+import type { Note } from "@/lib/types/note";
+import type { Article } from "@/lib/types/article";
 import { notFound } from "next/navigation";
 
 const ITEMS_PER_PAGE = 10;
@@ -28,7 +30,11 @@ export default async function TagPage({ params, searchParams }: TagPageProps) {
   const notes = getNotesByTag(tag);
   const articles = getArticlesByTag(tag);
 
-  let items: Array<{ type: "note" | "article"; slug: string; data: any }> = [];
+  type TaggedItem =
+    | { type: "note"; slug: string; data: Note }
+    | { type: "article"; slug: string; data: Article };
+
+  let items: TaggedItem[] = [];
 
   if (type === "notes") {
     items = notes.map((note) => ({ type: "note" as const, slug: note.slug, data: note }));
