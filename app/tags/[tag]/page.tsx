@@ -75,11 +75,11 @@ export default async function TagPage({ params, searchParams }: TagPageProps) {
     <div className="container mx-auto px-4 py-12">
       <div className="max-w-4xl mx-auto">
         <h1 className="font-serif text-5xl font-bold mb-4">
-          Tag: {decodeURIComponent(tag)}
+          Tag: {tag}
         </h1>
         <p className="text-lg text-muted-foreground mb-8">
           {items.length} {items.length === 1 ? "item" : "items"} tagged with{" "}
-          &quot;{decodeURIComponent(tag)}&quot;
+          &quot;{tag}&quot;
         </p>
 
         <div className="grid gap-6 md:grid-cols-1 mb-8">
