@@ -1,0 +1,27 @@
+---
+title: "Custom Article Layouts: A Visual Essay"
+date: "2026-01-28"
+tags: ["custom components", "react", "mdx", "design"]
+featuredImage: "/images/custom-layout.jpg"
+---
+
+This article is rendered by a **custom React component** instead of the default MDX template. It demonstrates how you can build unique layouts with your own React elements.
+
+## Why Custom Layouts?
+
+Sometimes a standard blog post layout isn't enough. You might want:
+
+- A hero section with a distinct visual style
+- Callout boxes or key takeaways
+- Custom typography and spacing for a specific piece
+- Interactive elements or embedded media
+
+## How It Works
+
+The custom component lives in `articles/[slug]/index.tsx` and is registered in `lib/article-components.ts`. When the article page loads, it checks for a custom component for that slug and uses it instead of the default MDX renderer.
+
+You still write content in MDX; the custom component fetches the article via `getArticleBySlug(slug)` and can render the body with `<MDXContent source={article.content} />` or compose it with custom sections.
+
+## Wrapping Up
+
+Custom layouts give you full control over structure and design while keeping your content in Markdown. This page is one example—you can build anything that fits your article.
