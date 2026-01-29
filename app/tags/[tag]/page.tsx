@@ -96,6 +96,7 @@ export default async function TagPage({ params, searchParams }: TagPageProps) {
           currentPage={currentPage}
           totalPages={totalPages}
           basePath={`/tags/${encodeURIComponent(tag)}`}
+          queryParams={type !== "all" ? { type } : undefined}
         />
       </div>
     </div>

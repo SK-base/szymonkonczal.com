@@ -7,6 +7,8 @@ interface PaginationProps {
   currentPage: number;
   totalPages: number;
   basePath: string;
+  /** Optional query params to preserve in pagination links (e.g. type=notes on tag pages). */
+  queryParams?: Record<string, string>;
   className?: string;
 }
 
@@ -14,13 +16,16 @@ export function Pagination({
   currentPage,
   totalPages,
   basePath,
+  queryParams,
   className,
 }: PaginationProps) {
   if (totalPages <= 1) return null;
 
   const getPageUrl = (page: number) => {
-    if (page === 1) return basePath;
-    return `${basePath}?page=${page}`;
+    const params = new URLSearchParams(queryParams ?? {});
+    if (page > 1) params.set("page", String(page));
+    const query = params.toString();
+    return query ? `${basePath}?${query}` : basePath;
   };
 
   const isFirstPage = currentPage === 1;
