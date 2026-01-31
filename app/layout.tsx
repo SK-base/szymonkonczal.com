@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Playfair_Display, Manrope } from "next/font/google";
 import "./globals.css";
+import { Footer } from "@/components/layout/Footer";
 import { NavBar } from "@/components/layout/NavBar";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 
@@ -34,6 +35,7 @@ export default function RootLayout({
         <ThemeProvider>
           <NavBar />
           <main className="min-h-[calc(100vh-4rem)]">{children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
