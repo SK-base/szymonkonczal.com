@@ -5,12 +5,51 @@
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://szymonkonczal.com";
 
+/** Site name for Open Graph and metadata. */
+export const SITE_NAME = "Szymon Konczal";
+
+/** Default OG image path (add public/images/og-default.png for site-wide OG image). */
+export const DEFAULT_OG_IMAGE_PATH = "/images/og-default.png";
+
 /**
  * Build an absolute URL for a path (used for canonical and OG URLs).
  */
 export function absoluteUrl(path: string): string {
   const normalized = path.startsWith("/") ? path : `/${path}`;
   return `${SITE_URL.replace(/\/$/, "")}${normalized}`;
+}
+
+export type OpenGraphType = "website" | "article";
+
+export interface OpenGraphOptions {
+  title: string;
+  description: string;
+  url: string;
+  type: OpenGraphType;
+  image?: string | null;
+}
+
+/**
+ * Build Open Graph metadata for Next.js metadata.openGraph.
+ * Uses SITE_NAME and en_US locale; optional image (absolute URL or path).
+ */
+export function buildOpenGraph(options: OpenGraphOptions) {
+  const { title, description, url, type, image } = options;
+  const imageUrl = image
+    ? image.startsWith("http")
+      ? image
+      : absoluteUrl(image)
+    : absoluteUrl(DEFAULT_OG_IMAGE_PATH);
+
+  return {
+    title,
+    description,
+    url,
+    siteName: SITE_NAME,
+    locale: "en_US" as const,
+    type,
+    images: [{ url: imageUrl }],
+  };
 }
 
 const META_DESCRIPTION_MAX_LENGTH = 160;

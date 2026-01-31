@@ -5,6 +5,7 @@ import "./globals.css";
 import { Footer } from "@/components/layout/Footer";
 import { NavBar } from "@/components/layout/NavBar";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
+import { absoluteUrl, SITE_NAME, DEFAULT_OG_IMAGE_PATH } from "@/lib/metadata";
 
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
@@ -24,6 +25,12 @@ export const metadata: Metadata = {
     template: "%s | Szymon Konczal",
   },
   description: "Personal homepage, notes, articles, and projects",
+  openGraph: {
+    siteName: SITE_NAME,
+    locale: "en_US",
+    type: "website",
+    images: [{ url: absoluteUrl(DEFAULT_OG_IMAGE_PATH) }],
+  },
 };
 
 export default function RootLayout({

@@ -4,7 +4,7 @@ import { format } from "date-fns";
 import { MDXContent } from "@/lib/mdx";
 import { TagList } from "@/components/blog/TagList";
 import { getNoteBySlug, getAllNoteSlugs } from "@/lib/content/notes";
-import { absoluteUrl, excerptFromContent } from "@/lib/metadata";
+import { absoluteUrl, excerptFromContent, buildOpenGraph } from "@/lib/metadata";
 
 interface NotePageProps {
   params: Promise<{ slug: string }>;
@@ -25,11 +25,19 @@ export async function generateMetadata({
   const title = note.frontmatter.title;
   const description =
     excerptFromContent(note.content) || `Note: ${note.frontmatter.title}.`;
+  const canonicalUrl = absoluteUrl(`/note/${slug}`);
 
   return {
     title,
     description,
-    alternates: { canonical: absoluteUrl(`/note/${slug}`) },
+    alternates: { canonical: canonicalUrl },
+    openGraph: buildOpenGraph({
+      title: `${title} | Szymon Konczal`,
+      description,
+      url: canonicalUrl,
+      type: "article",
+      image: note.frontmatter.featuredImage ?? undefined,
+    }),
   };
 }
 

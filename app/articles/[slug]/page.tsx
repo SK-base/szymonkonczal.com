@@ -9,7 +9,7 @@ import {
   getAllArticleSlugs,
 } from "@/lib/content/articles";
 import { getCustomArticleComponent } from "@/lib/article-components";
-import { absoluteUrl, excerptFromContent } from "@/lib/metadata";
+import { absoluteUrl, excerptFromContent, buildOpenGraph } from "@/lib/metadata";
 
 interface ArticlePageProps {
   params: Promise<{ slug: string }>;
@@ -31,11 +31,19 @@ export async function generateMetadata({
   const description =
     excerptFromContent(article.content) ||
     `Article: ${article.frontmatter.title}.`;
+  const canonicalUrl = absoluteUrl(`/articles/${slug}`);
 
   return {
     title,
     description,
-    alternates: { canonical: absoluteUrl(`/articles/${slug}`) },
+    alternates: { canonical: canonicalUrl },
+    openGraph: buildOpenGraph({
+      title: `${title} | Szymon Konczal`,
+      description,
+      url: canonicalUrl,
+      type: "article",
+      image: article.frontmatter.featuredImage ?? undefined,
+    }),
   };
 }
 

@@ -2,13 +2,21 @@ import type { Metadata } from "next";
 import { ArticleCard } from "@/components/blog/ArticleCard";
 import { Pagination } from "@/components/blog/Pagination";
 import { getAllArticles } from "@/lib/content/articles";
-import { absoluteUrl } from "@/lib/metadata";
+import { absoluteUrl, buildOpenGraph } from "@/lib/metadata";
+
+const description =
+  "Longer, evergreen pieces with custom-designed layouts—deep dives and reference on web development, design, and more.";
 
 export const metadata: Metadata = {
   title: "Articles",
-  description:
-    "Longer, evergreen pieces with custom-designed layouts—deep dives and reference on web development, design, and more.",
+  description,
   alternates: { canonical: absoluteUrl("/articles") },
+  openGraph: buildOpenGraph({
+    title: "Articles | Szymon Konczal",
+    description,
+    url: absoluteUrl("/articles"),
+    type: "website",
+  }),
 };
 
 const ITEMS_PER_PAGE = 10;

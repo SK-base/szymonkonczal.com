@@ -10,7 +10,7 @@ import {
 import type { Note } from "@/lib/types/note";
 import type { Article } from "@/lib/types/article";
 import { notFound } from "next/navigation";
-import { absoluteUrl } from "@/lib/metadata";
+import { absoluteUrl, buildOpenGraph } from "@/lib/metadata";
 
 const ITEMS_PER_PAGE = 10;
 
@@ -46,11 +46,18 @@ export async function generateMetadata({
   if (resolved.type && resolved.type !== "all") query.set("type", resolved.type);
   const qs = query.toString();
   const path = `/tags/${encodeURIComponent(tag)}${qs ? `?${qs}` : ""}`;
+  const canonicalUrl = absoluteUrl(path);
 
   return {
     title: `Tag: ${title}`,
     description,
-    alternates: { canonical: absoluteUrl(path) },
+    alternates: { canonical: canonicalUrl },
+    openGraph: buildOpenGraph({
+      title: `Tag: ${title} | Szymon Konczal`,
+      description,
+      url: canonicalUrl,
+      type: "website",
+    }),
   };
 }
 

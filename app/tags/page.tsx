@@ -1,12 +1,20 @@
 import type { Metadata } from "next";
 import { TagList } from "@/components/blog/TagList";
 import { getAllTags } from "@/lib/content/tags";
-import { absoluteUrl } from "@/lib/metadata";
+import { absoluteUrl, buildOpenGraph } from "@/lib/metadata";
+
+const description = "Browse notes and articles by tag.";
 
 export const metadata: Metadata = {
   title: "Tags",
-  description: "Browse notes and articles by tag.",
+  description,
   alternates: { canonical: absoluteUrl("/tags") },
+  openGraph: buildOpenGraph({
+    title: "Tags | Szymon Konczal",
+    description,
+    url: absoluteUrl("/tags"),
+    type: "website",
+  }),
 };
 
 export default function TagsIndexPage() {

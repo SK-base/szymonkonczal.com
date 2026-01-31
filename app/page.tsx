@@ -4,13 +4,21 @@ import { NoteCard } from "@/components/blog/NoteCard";
 import { ArticleCard } from "@/components/blog/ArticleCard";
 import { getLatestNotes } from "@/lib/content/notes";
 import { getLatestArticles } from "@/lib/content/articles";
-import { absoluteUrl } from "@/lib/metadata";
+import { absoluteUrl, buildOpenGraph } from "@/lib/metadata";
+
+const description =
+  "Notes, articles, and projects from my journey. Personal homepage of Szymon Konczal.";
 
 export const metadata: Metadata = {
   title: "Home",
-  description:
-    "Notes, articles, and projects from my journey. Personal homepage of Szymon Konczal.",
+  description,
   alternates: { canonical: absoluteUrl("/") },
+  openGraph: buildOpenGraph({
+    title: "Szymon Konczal",
+    description,
+    url: absoluteUrl("/"),
+    type: "website",
+  }),
 };
 
 export default function HomePage() {

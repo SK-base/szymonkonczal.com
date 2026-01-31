@@ -13,10 +13,10 @@ This document is a checklist of SEO improvements for the personal homepage. Impl
 
 ## 2. Open Graph (OG)
 
-- [ ] **og:title, og:description, og:url, og:type** – Populate via Next.js `metadata.openGraph`; use article title/description and canonical URL; `type`: `website` for listing/about, `article` for posts.
-- [ ] **og:image** – Default image for the site (e.g. logo or banner); for articles/notes use `featuredImage` from frontmatter when present.
-- [ ] **og:site_name** – Site name (e.g. "Szymon Konczal").
-- [ ] **og:locale** – e.g. `en_US` (optional but good practice).
+- [x] **og:title, og:description, og:url, og:type** – Populate via Next.js `metadata.openGraph`; use article title/description and canonical URL; `type`: `website` for listing/about, `article` for posts.
+- [x] **og:image** – Default image for the site (e.g. logo or banner); for articles/notes use `featuredImage` from frontmatter when present.
+- [x] **og:site_name** – Site name (e.g. "Szymon Konczal").
+- [x] **og:locale** – e.g. `en_US` (optional but good practice).
 
 ## 3. Twitter Cards
 

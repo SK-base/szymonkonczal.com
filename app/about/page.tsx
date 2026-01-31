@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
-import { absoluteUrl } from "@/lib/metadata";
+import { absoluteUrl, buildOpenGraph } from "@/lib/metadata";
+
+const description =
+  "I'm a developer, writer, and creator passionate about building meaningful things on the web. Notes, articles, and projects.";
 
 export const metadata: Metadata = {
   title: "About",
-  description:
-    "I'm a developer, writer, and creator passionate about building meaningful things on the web. Notes, articles, and projects.",
+  description,
   alternates: { canonical: absoluteUrl("/about") },
+  openGraph: buildOpenGraph({
+    title: "About | Szymon Konczal",
+    description,
+    url: absoluteUrl("/about"),
+    type: "website",
+  }),
 };
 
 export default function AboutPage() {
