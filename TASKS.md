@@ -41,7 +41,7 @@ Actionable task list grouped by area. Use checkboxes to track progress.
 
 - [ ] **(TASK-010)** Move tags below post content (or below title block) on default note and article single pages.
   - Files: `app/note/[slug]/page.tsx`, `app/articles/[slug]/page.tsx`
-- [ ] **(TASK-011)** Use monospace font (e.g. Courier New) for tags in note/article.
+- [x] **(TASK-011)** Use monospace font (e.g. Courier New) for tags in note/article.
   - Files: `app/note/[slug]/page.tsx`, `app/articles/[slug]/page.tsx`, possibly `app/globals.css`
 
 ### UI – Pagination

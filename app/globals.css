@@ -93,6 +93,7 @@
 @theme {
   --font-serif: "Playfair Display", serif;
   --font-sans: "Manrope", sans-serif;
+  --font-mono: "Courier New", Courier, monospace;
 }
 
 @theme inline {

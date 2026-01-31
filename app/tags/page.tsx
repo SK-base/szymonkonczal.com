@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { TagList } from "@/components/blog/TagList";
 import { getAllTags } from "@/lib/content/tags";
 
 export default function TagsIndexPage() {
@@ -11,17 +11,10 @@ export default function TagsIndexPage() {
         <p className="text-lg text-muted-foreground mb-8">
           Browse notes and articles by tag.
         </p>
-        <div className="flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <Link
-              key={tag}
-              href={`/tags/${encodeURIComponent(tag.toLowerCase())}`}
-              className="px-3 py-1.5 text-sm rounded bg-warm-highlight/30 text-muted-foreground hover:bg-warm-highlight/50 hover:text-accent transition-colors"
-            >
-              {tag}
-            </Link>
-          ))}
-        </div>
+        <TagList
+          tags={tags}
+          className="[&_a]:px-3 [&_a]:py-1.5 [&_a]:text-sm [&_a]:hover:text-accent"
+        />
       </div>
     </div>
   );
