@@ -26,7 +26,7 @@ export function Footer() {
       <div className="container mx-auto flex flex-col gap-4 px-4 py-6 max-w-7xl sm:flex-row sm:items-center sm:justify-between">
         <div className="hidden min-w-0 flex-1 sm:block" aria-hidden />
         <p className="w-full shrink-0 text-center text-sm text-muted-foreground sm:w-auto">
-          © 2007–2026 Made with <span className="text-foreground" aria-hidden>❤️</span> by Szymon Konczal
+          © 2007–2026 Made with <span className="text-foreground dark:hidden" aria-hidden>🖤</span><span className="text-foreground hidden dark:inline" aria-hidden>🤍</span> by Szymon Konczal
         </p>
         <div className="flex w-full items-center justify-end gap-4 sm:w-auto sm:flex-1">
           <Button
