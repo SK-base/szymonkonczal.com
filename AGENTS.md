@@ -169,9 +169,13 @@ pnpm lint
 ## Deployment
 
 ### Vercel
-- Automatic deployment on push to `main` branch
+- Automatic deployment on push to `main` branch (when secrets are configured)
 - Uses GitHub Actions workflow for CI/CD
-- Requires Vercel secrets: `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`
+- **Required GitHub secrets** (add in repo: Settings → Secrets and variables → Actions):
+  1. **VERCEL_TOKEN** – Vercel → Settings → Tokens → Create token; paste value as `VERCEL_TOKEN`
+  2. **VERCEL_ORG_ID** – From Vercel project: Settings → General → Project ID, or from `.vercel/project.json` (field `orgId`)
+  3. **VERCEL_PROJECT_ID** – Same place as org ID; use the project’s **Project ID** (not the project name)
+- If these secrets are not set, the workflow still runs (build, typecheck, lint) but the deploy step is skipped.
 
 ### CI/CD Pipeline
 1. Checkout code
