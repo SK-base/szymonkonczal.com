@@ -65,8 +65,8 @@ Actionable task list grouped by area. Use checkboxes to track progress.
 
 ### Content – New pages
 
-- [ ] **(TASK-017)** Add Search page: large search input at top, list of tags with usage count below.
-  - New route: `app/search/page.tsx` (or equivalent); extend `lib/content/tags.ts` for tag usage counts
+- [x] **(TASK-017)** Add Search overlay: magnifier icon in nav bar; on click, blur entire site and show centered large rounded search input; results below (Notes, Articles, Tags, About). Debounce input to limit requests. Search in titles and tags of notes/articles, tag names, About page.
+  - Files: `components/layout/NavBar.tsx`, new `components/layout/SearchOverlay.tsx`, new `app/api/search/route.ts`
 - [ ] **(TASK-018)** Add Philosophy subpage (route + content).
   - New route: `app/philosophy/page.tsx` (or equivalent)
 
