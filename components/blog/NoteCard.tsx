@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { TagList } from "./TagList";
 import type { Note } from "@/lib/types/note";
 import { cn } from "@/lib/utils";
+import { excerptFromContent } from "@/lib/metadata";
 
 interface NoteCardProps {
   note: Note;
@@ -11,12 +12,7 @@ interface NoteCardProps {
 }
 
 export function NoteCard({ note, className }: NoteCardProps) {
-  const excerpt = note.content
-    .split("\n")
-    .filter((line) => line.trim().length > 0)
-    .slice(0, 2)
-    .join(" ")
-    .substring(0, 150);
+  const excerpt = excerptFromContent(note.content, 150);
 
   return (
     <Card className={cn("hover:shadow-lg transition-shadow", className)}>
@@ -35,7 +31,7 @@ export function NoteCard({ note, className }: NoteCardProps) {
         </div>
       </CardHeader>
       <CardContent>
-        <p className="text-muted-foreground mb-4 line-clamp-3">{excerpt}...</p>
+        <p className="text-muted-foreground mb-4 line-clamp-3">{excerpt}</p>
         {note.frontmatter.tags.length > 0 && (
           <TagList tags={note.frontmatter.tags} />
         )}

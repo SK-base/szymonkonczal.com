@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { TagList } from "./TagList";
 import type { Article } from "@/lib/types/article";
 import { cn } from "@/lib/utils";
+import { excerptFromContent } from "@/lib/metadata";
 
 interface ArticleCardProps {
   article: Article;
@@ -16,12 +17,7 @@ interface ArticleCardProps {
 
 export function ArticleCard({ article, className }: ArticleCardProps) {
   const [imageError, setImageError] = useState(false);
-  const excerpt = article.content
-    .split("\n")
-    .filter((line) => line.trim().length > 0)
-    .slice(0, 2)
-    .join(" ")
-    .substring(0, 150);
+  const excerpt = excerptFromContent(article.content, 150);
 
   return (
     <Card className={cn("hover:shadow-lg transition-shadow", className)}>
@@ -53,7 +49,7 @@ export function ArticleCard({ article, className }: ArticleCardProps) {
         </div>
       </CardHeader>
       <CardContent>
-        <p className="text-muted-foreground mb-4 line-clamp-3">{excerpt}...</p>
+        <p className="text-muted-foreground mb-4 line-clamp-3">{excerpt}</p>
         {article.frontmatter.tags.length > 0 && (
           <TagList tags={article.frontmatter.tags} />
         )}
