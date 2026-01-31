@@ -16,7 +16,7 @@ Actionable task list grouped by area. Use checkboxes to track progress.
 
 ### UI – Bottom bar
 
-- [ ] **(TASK-004)** Add a footer component with: copyright 2007–2026, “Made with ❤️ by Szymon Konczal”, theme toggle (light/dark), social links (LinkedIn, GitHub, X, Instagram).
+- [x] **(TASK-004)** Add a footer component with: copyright 2007–2026, “Made with ❤️ by Szymon Konczal”, theme toggle (light/dark), social links (LinkedIn, GitHub, X, Instagram).
   - New file: `components/layout/Footer.tsx` (or equivalent)
 - [x] **(TASK-005)** Integrate footer into `app/layout.tsx`.
 
