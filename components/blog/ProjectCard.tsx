@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
@@ -12,18 +15,24 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, className }: ProjectCardProps) {
+  const [imageError, setImageError] = useState(false);
+  const imageSrc = project.image || project.logo;
+
   return (
     <Card className={cn("hover:shadow-lg transition-shadow", className)}>
-      {(project.image || project.logo) && (
-        <div className="relative w-full h-48 overflow-hidden rounded-t-lg bg-surface">
+      <div className="relative w-full h-48 overflow-hidden rounded-t-lg bg-surface flex items-center justify-center">
+        {imageSrc && !imageError ? (
           <Image
-            src={project.image || project.logo || ""}
+            src={imageSrc}
             alt={project.title}
             fill
             className="object-cover"
+            onError={() => setImageError(true)}
           />
-        </div>
-      )}
+        ) : (
+          <span className="text-muted-foreground text-sm">Photo placeholder</span>
+        )}
+      </div>
       <CardHeader>
         <h3 className="font-serif text-2xl font-bold">{project.title}</h3>
       </CardHeader>
