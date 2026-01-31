@@ -34,7 +34,7 @@ Actionable task list grouped by area. Use checkboxes to track progress.
 - [x] **(TASK-007)** Make menu items uppercase via CSS only (no text change) in `components/layout/NavBar.tsx`.
 - [x] **(TASK-008)** Add “Tags” link below Articles/Notes in nav (e.g. link to `/tags` index or dedicated tags page).
   - Files: `components/layout/NavBar.tsx`
-- [ ] **(TASK-009)** Add hamburger menu for narrow viewports; show full nav in drawer/sheet on toggle.
+- [x] **(TASK-009)** Add hamburger menu for narrow viewports; show full nav in drawer/sheet on toggle.
   - Files: `components/layout/NavBar.tsx` (or new mobile nav component)
 
 ### UI – Default note and article view
