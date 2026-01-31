@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Playfair_Display, Manrope } from "next/font/google";
 import "./globals.css";
 import { NavBar } from "@/components/layout/NavBar";
+import { ThemeProvider } from "@/components/layout/ThemeProvider";
 
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
@@ -26,10 +28,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfairDisplay.variable} ${manrope.variable}`}>
+    <html lang="en" className={`${playfairDisplay.variable} ${manrope.variable}`} suppressHydrationWarning>
       <body className="min-h-screen">
-        <NavBar />
-        <main className="min-h-[calc(100vh-4rem)]">{children}</main>
+        <Script src="/theme-init.js" strategy="beforeInteractive" />
+        <ThemeProvider>
+          <NavBar />
+          <main className="min-h-[calc(100vh-4rem)]">{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   );

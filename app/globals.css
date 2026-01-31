@@ -49,6 +49,45 @@
     --sidebar-border: #E5E5E5;
     --sidebar-ring: #204136;
   }
+
+  /* Dark mode – class on html, e.g. <html class="dark"> */
+  .dark {
+    --background: #1A1A1A;
+    --foreground: #F0EDEB;
+    --card: #252525;
+    --card-foreground: #F0EDEB;
+    --popover: #252525;
+    --popover-foreground: #F0EDEB;
+    --primary: #2D5A4A;
+    --primary-foreground: #ffffff;
+    --secondary: #2D2D2D;
+    --secondary-foreground: #F0EDEB;
+    --muted: #9A9590;
+    --muted-foreground: #9A9590;
+    --accent: #2D5A4A;
+    --accent-foreground: #ffffff;
+    --destructive: #A54A4A;
+    --destructive-foreground: #ffffff;
+    --border: #3D3D3D;
+    --input: #3D3D3D;
+    --ring: #2D5A4A;
+    --surface: #252525;
+    --warm-highlight: #353230;
+    --accent-dark: #204136;
+    --chart-1: #2D5A4A;
+    --chart-2: #3D6B5C;
+    --chart-3: #4D7B6C;
+    --chart-4: #9A9590;
+    --chart-5: #B5B0AB;
+    --sidebar: #252525;
+    --sidebar-foreground: #F0EDEB;
+    --sidebar-primary: #2D5A4A;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #2D2D2D;
+    --sidebar-accent-foreground: #F0EDEB;
+    --sidebar-border: #3D3D3D;
+    --sidebar-ring: #2D5A4A;
+  }
 }
 
 @theme {

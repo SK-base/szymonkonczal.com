@@ -10,7 +10,7 @@ Actionable task list grouped by area. Use checkboxes to track progress.
 
 - [x] **(TASK-001)** Use white/dirty-white background (#FAFAFA) and dark-almost-black (#292727); set main active color to dark green (#204136).
   - Files: `app/globals.css`
-- [ ] **(TASK-002)** Implement dark mode (CSS variables + class on `html` or `body`, persist preference).
+- [x] **(TASK-002)** Implement dark mode (CSS variables + class on `html` or `body`, persist preference).
   - Files: `app/globals.css`, `app/layout.tsx` (or theme provider)
 - [ ] **(TASK-003)** Apply new palette in `app/globals.css` (and dark variant) and ensure components use semantic tokens.
 
