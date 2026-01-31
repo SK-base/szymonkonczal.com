@@ -109,7 +109,8 @@ Actionable task list grouped by area. Use checkboxes to track progress.
 
 - [ ] **(TASK-027)** Add Google Analytics (e.g. script in layout or `next/script`).
   - Files: `app/layout.tsx`
-- [ ] **(TASK-028)** Document SEO improvements in a list (meta tags, Open Graph, sitemap, etc.) in TASKS or a dedicated doc.
+- [x] **(TASK-028)** Document SEO improvements in a list (meta tags, Open Graph, sitemap, etc.) in **SEO.md**; see that file for the full checklist.
+  - Categories: meta tags & titles, Open Graph, Twitter Cards, sitemap & robots, JSON-LD, per-page metadata, technical & performance, content & UX. See [SEO.md](SEO.md).
 
 ### Technical – Pipeline and deployment
 
