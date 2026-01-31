@@ -8,21 +8,21 @@ Actionable task list grouped by area. Use checkboxes to track progress.
 
 ### UI – Theme and colors
 
-- [ ] **(TASK-001)** Use white/dirty-white background (#FAFAFA) and dark-almost-black (#292727); set main active color to dark green (#204136).
+- [x] **(TASK-001)** Use white/dirty-white background (#FAFAFA) and dark-almost-black (#292727); set main active color to dark green (#204136).
   - Files: `app/globals.css`
-- [ ] **(TASK-002)** Implement dark mode (CSS variables + class on `html` or `body`, persist preference).
+- [x] **(TASK-002)** Implement dark mode (CSS variables + class on `html` or `body`, persist preference).
   - Files: `app/globals.css`, `app/layout.tsx` (or theme provider)
-- [ ] **(TASK-003)** Apply new palette in `app/globals.css` (and dark variant) and ensure components use semantic tokens.
+- [x] **(TASK-003)** Apply new palette in `app/globals.css` (and dark variant) and ensure components use semantic tokens.
 
 ### UI – Bottom bar
 
-- [ ] **(TASK-004)** Add a footer component with: copyright 2007–2026, “Made with love by Szymon Konczal”, theme toggle (light/dark), social links (LinkedIn, GitHub, X, Instagram).
+- [x] **(TASK-004)** Add a footer component with: copyright 2007–2026, “Made with ❤️ by Szymon Konczal”, theme toggle (light/dark), social links (LinkedIn, GitHub, X, Instagram).
   - New file: `components/layout/Footer.tsx` (or equivalent)
-- [ ] **(TASK-005)** Integrate footer into `app/layout.tsx`.
+- [x] **(TASK-005)** Integrate footer into `app/layout.tsx`.
 
 ### UI – Logotype
 
-- [ ] **(TASK-006)** Logotype in circle: white initials on black circle (light mode), reversed in dark mode; use in NavBar (replace or wrap current “SK” link).
+- [x] **(TASK-006)** Logotype in circle: white initials on black circle (light mode), reversed in dark mode; use in NavBar (replace or wrap current “SK” link).
   - Files: `components/layout/NavBar.tsx`, optionally a `components/layout/Logotype.tsx`
 
 ---
@@ -31,7 +31,7 @@ Actionable task list grouped by area. Use checkboxes to track progress.
 
 ### UI – Menu and nav
 
-- [ ] **(TASK-007)** Make menu items uppercase via CSS only (no text change) in `components/layout/NavBar.tsx`.
+- [x] **(TASK-007)** Make menu items uppercase via CSS only (no text change) in `components/layout/NavBar.tsx`.
 - [ ] **(TASK-008)** Add “Tags” link below Articles/Notes in nav (e.g. link to `/tags` index or dedicated tags page).
   - Files: `components/layout/NavBar.tsx`
 - [ ] **(TASK-009)** Add hamburger menu for narrow viewports; show full nav in drawer/sheet on toggle.

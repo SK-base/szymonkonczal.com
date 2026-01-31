@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { format } from "date-fns";
@@ -12,6 +15,7 @@ interface ArticleCardProps {
 }
 
 export function ArticleCard({ article, className }: ArticleCardProps) {
+  const [imageError, setImageError] = useState(false);
   const excerpt = article.content
     .split("\n")
     .filter((line) => line.trim().length > 0)
@@ -21,16 +25,19 @@ export function ArticleCard({ article, className }: ArticleCardProps) {
 
   return (
     <Card className={cn("hover:shadow-lg transition-shadow", className)}>
-      {article.frontmatter.featuredImage && (
-        <div className="relative w-full h-48 overflow-hidden rounded-t-lg">
+      <div className="relative w-full h-48 overflow-hidden rounded-t-lg bg-surface flex items-center justify-center">
+        {article.frontmatter.featuredImage && !imageError ? (
           <Image
             src={article.frontmatter.featuredImage}
             alt={article.frontmatter.title}
             fill
             className="object-cover"
+            onError={() => setImageError(true)}
           />
-        </div>
-      )}
+        ) : (
+          <span className="text-muted-foreground text-sm">Photo placeholder</span>
+        )}
+      </div>
       <CardHeader>
         <Link href={`/articles/${article.slug}`}>
           <h3 className="font-serif text-2xl font-bold hover:text-accent transition-colors">
