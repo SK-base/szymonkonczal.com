@@ -102,7 +102,8 @@ Actionable task list grouped by area. Use checkboxes to track progress.
 
 ### Technical – Testing
 
-- [ ] **(TASK-025)** Add unit tests (e.g. Vitest or Jest) for `lib/content` and key utilities.
+- [x] **(TASK-025)** Add unit tests (e.g. Vitest or Jest) for `lib/content` and key utilities.
+  - Vitest; tests in `lib/utils.test.ts`, `lib/utils/reading-time.test.ts`, `lib/content/*.test.ts`; `pnpm test` runs in CI.
 - [ ] **(TASK-026)** Add E2E tests with Playwright (critical paths: home, note, article, search if implemented).
 
 ### Technical – Analytics and SEO

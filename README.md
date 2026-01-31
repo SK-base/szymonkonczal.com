@@ -25,7 +25,7 @@ A personal homepage/blog built with Next.js, featuring notes, articles, projects
 
 ### Prerequisites
 
-- Node.js 20+
+- Node.js 24+
 - pnpm
 
 ### Installation
