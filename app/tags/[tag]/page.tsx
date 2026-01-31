@@ -10,7 +10,7 @@ import {
 import type { Note } from "@/lib/types/note";
 import type { Article } from "@/lib/types/article";
 import { notFound } from "next/navigation";
-import { absoluteUrl, buildOpenGraph } from "@/lib/metadata";
+import { absoluteUrl, buildOpenGraph, buildTwitter } from "@/lib/metadata";
 
 const ITEMS_PER_PAGE = 10;
 
@@ -57,6 +57,10 @@ export async function generateMetadata({
       description,
       url: canonicalUrl,
       type: "website",
+    }),
+    twitter: buildTwitter({
+      title: `Tag: ${title} | Szymon Konczal`,
+      description,
     }),
   };
 }

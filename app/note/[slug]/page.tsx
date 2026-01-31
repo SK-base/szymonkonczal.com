@@ -4,7 +4,7 @@ import { format } from "date-fns";
 import { MDXContent } from "@/lib/mdx";
 import { TagList } from "@/components/blog/TagList";
 import { getNoteBySlug, getAllNoteSlugs } from "@/lib/content/notes";
-import { absoluteUrl, excerptFromContent, buildOpenGraph } from "@/lib/metadata";
+import { absoluteUrl, excerptFromContent, buildOpenGraph, buildTwitter } from "@/lib/metadata";
 
 interface NotePageProps {
   params: Promise<{ slug: string }>;
@@ -36,6 +36,11 @@ export async function generateMetadata({
       description,
       url: canonicalUrl,
       type: "article",
+      image: note.frontmatter.featuredImage ?? undefined,
+    }),
+    twitter: buildTwitter({
+      title: `${title} | Szymon Konczal`,
+      description,
       image: note.frontmatter.featuredImage ?? undefined,
     }),
   };

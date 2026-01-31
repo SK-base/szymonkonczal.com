@@ -52,6 +52,37 @@ export function buildOpenGraph(options: OpenGraphOptions) {
   };
 }
 
+/**
+ * Options for Twitter Card metadata (subset of OG: title, description, image).
+ */
+export interface TwitterCardOptions {
+  title: string;
+  description: string;
+  image?: string | null;
+}
+
+/**
+ * Build Twitter Card metadata for Next.js metadata.twitter.
+ * Uses summary_large_image when image is provided (e.g. featuredImage), else summary with default image for site-wide consistency.
+ * Mirrors OG title, description, and image.
+ */
+export function buildTwitter(options: TwitterCardOptions) {
+  const { title, description, image } = options;
+  const imageUrl = image
+    ? image.startsWith("http")
+      ? image
+      : absoluteUrl(image)
+    : absoluteUrl(DEFAULT_OG_IMAGE_PATH);
+  const useLargeImage = Boolean(image);
+
+  return {
+    card: useLargeImage ? ("summary_large_image" as const) : ("summary" as const),
+    title,
+    description,
+    images: [imageUrl],
+  };
+}
+
 const META_DESCRIPTION_MAX_LENGTH = 160;
 
 /**

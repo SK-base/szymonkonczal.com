@@ -5,7 +5,7 @@ import "./globals.css";
 import { Footer } from "@/components/layout/Footer";
 import { NavBar } from "@/components/layout/NavBar";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
-import { absoluteUrl, SITE_NAME, DEFAULT_OG_IMAGE_PATH } from "@/lib/metadata";
+import { absoluteUrl, SITE_NAME, DEFAULT_OG_IMAGE_PATH, buildTwitter } from "@/lib/metadata";
 
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
@@ -31,6 +31,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [{ url: absoluteUrl(DEFAULT_OG_IMAGE_PATH) }],
   },
+  twitter: buildTwitter({
+    title: SITE_NAME,
+    description: "Personal homepage, notes, articles, and projects",
+  }),
 };
 
 export default function RootLayout({

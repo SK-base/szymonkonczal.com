@@ -20,8 +20,8 @@ This document is a checklist of SEO improvements for the personal homepage. Impl
 
 ## 3. Twitter Cards
 
-- [ ] **twitter:card** – `summary_large_image` when image available, else `summary`.
-- [ ] **twitter:title, twitter:description, twitter:image** – Mirror OG or set explicitly via `metadata.twitter`.
+- [x] **twitter:card** – `summary_large_image` when image available, else `summary`.
+- [x] **twitter:title, twitter:description, twitter:image** – Mirror OG or set explicitly via `metadata.twitter`.
 
 ## 4. Sitemap and robots
 

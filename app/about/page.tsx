@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { absoluteUrl, buildOpenGraph } from "@/lib/metadata";
+import { absoluteUrl, buildOpenGraph, buildTwitter } from "@/lib/metadata";
 
 const description =
   "I'm a developer, writer, and creator passionate about building meaningful things on the web. Notes, articles, and projects.";
@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     url: absoluteUrl("/about"),
     type: "website",
   }),
+  twitter: buildTwitter({ title: "About | Szymon Konczal", description }),
 };
 
 export default function AboutPage() {

@@ -9,7 +9,7 @@ import {
   getAllArticleSlugs,
 } from "@/lib/content/articles";
 import { getCustomArticleComponent } from "@/lib/article-components";
-import { absoluteUrl, excerptFromContent, buildOpenGraph } from "@/lib/metadata";
+import { absoluteUrl, excerptFromContent, buildOpenGraph, buildTwitter } from "@/lib/metadata";
 
 interface ArticlePageProps {
   params: Promise<{ slug: string }>;
@@ -42,6 +42,11 @@ export async function generateMetadata({
       description,
       url: canonicalUrl,
       type: "article",
+      image: article.frontmatter.featuredImage ?? undefined,
+    }),
+    twitter: buildTwitter({
+      title: `${title} | Szymon Konczal`,
+      description,
       image: article.frontmatter.featuredImage ?? undefined,
     }),
   };
