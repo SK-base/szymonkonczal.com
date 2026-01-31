@@ -92,7 +92,7 @@ const META_DESCRIPTION_MAX_LENGTH = 160;
 export function excerptFromContent(content: string, maxLength = META_DESCRIPTION_MAX_LENGTH): string {
   if (!content || !content.trim()) return "";
 
-  let text = content
+  const text = content
     // Code blocks (multiline)
     .replace(/```[\s\S]*?```/g, " ")
     // Inline code
