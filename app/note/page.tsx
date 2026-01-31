@@ -1,6 +1,15 @@
+import type { Metadata } from "next";
 import { NoteCard } from "@/components/blog/NoteCard";
 import { Pagination } from "@/components/blog/Pagination";
 import { getAllNotes } from "@/lib/content/notes";
+import { absoluteUrl } from "@/lib/metadata";
+
+export const metadata: Metadata = {
+  title: "Notes",
+  description:
+    "Short, frequent posts—quick ideas, tips, links, and learnings.",
+  alternates: { canonical: absoluteUrl("/note") },
+};
 
 const ITEMS_PER_PAGE = 10;
 

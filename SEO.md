@@ -6,10 +6,10 @@ This document is a checklist of SEO improvements for the personal homepage. Impl
 
 ## 1. Meta tags and titles
 
-- [ ] **Title template** – Use Next.js `metadata.title.template` (e.g. `%s | Szymon Konczal`) in root layout so child pages get consistent branding.
-- [ ] **Per-page titles** – Set unique `title` for homepage, `/about`, `/articles`, `/note`, `/projects`, `/tags`, and dynamic routes (`/articles/[slug]`, `/note/[slug]`, `/tags/[tag]`).
-- [ ] **Meta description** – Set `description` per page; for articles/notes use excerpt (see section 6) or first N characters of content; keep length ~150–160 characters.
-- [ ] **Canonical URL** – Set `metadata.alternates.canonical` for each page (absolute URL) to avoid duplicate-content issues (e.g. with/without trailing slash or query params).
+- [x] **Title template** – Use Next.js `metadata.title.template` (e.g. `%s | Szymon Konczal`) in root layout so child pages get consistent branding.
+- [x] **Per-page titles** – Set unique `title` for homepage, `/about`, `/articles`, `/note`, `/projects`, `/tags`, and dynamic routes (`/articles/[slug]`, `/note/[slug]`, `/tags/[tag]`).
+- [x] **Meta description** – Set `description` per page; for articles/notes use excerpt (see section 6) or first N characters of content; keep length ~150–160 characters.
+- [x] **Canonical URL** – Set `metadata.alternates.canonical` for each page (absolute URL) to avoid duplicate-content issues (e.g. with/without trailing slash or query params).
 
 ## 2. Open Graph (OG)
 

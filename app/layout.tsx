@@ -19,7 +19,10 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Szymon Konczal",
+  title: {
+    default: "Szymon Konczal",
+    template: "%s | Szymon Konczal",
+  },
   description: "Personal homepage, notes, articles, and projects",
 };
 

@@ -1,8 +1,17 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { NoteCard } from "@/components/blog/NoteCard";
 import { ArticleCard } from "@/components/blog/ArticleCard";
 import { getLatestNotes } from "@/lib/content/notes";
 import { getLatestArticles } from "@/lib/content/articles";
+import { absoluteUrl } from "@/lib/metadata";
+
+export const metadata: Metadata = {
+  title: "Home",
+  description:
+    "Notes, articles, and projects from my journey. Personal homepage of Szymon Konczal.",
+  alternates: { canonical: absoluteUrl("/") },
+};
 
 export default function HomePage() {
   const latestNotes = getLatestNotes(3);

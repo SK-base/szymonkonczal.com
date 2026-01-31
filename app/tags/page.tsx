@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import { TagList } from "@/components/blog/TagList";
 import { getAllTags } from "@/lib/content/tags";
+import { absoluteUrl } from "@/lib/metadata";
+
+export const metadata: Metadata = {
+  title: "Tags",
+  description: "Browse notes and articles by tag.",
+  alternates: { canonical: absoluteUrl("/tags") },
+};
 
 export default function TagsIndexPage() {
   const tags = getAllTags();

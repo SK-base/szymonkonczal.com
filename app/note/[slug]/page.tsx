@@ -1,8 +1,10 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { format } from "date-fns";
 import { MDXContent } from "@/lib/mdx";
 import { TagList } from "@/components/blog/TagList";
 import { getNoteBySlug, getAllNoteSlugs } from "@/lib/content/notes";
+import { absoluteUrl, excerptFromContent } from "@/lib/metadata";
 
 interface NotePageProps {
   params: Promise<{ slug: string }>;
@@ -11,6 +13,24 @@ interface NotePageProps {
 export async function generateStaticParams() {
   const slugs = getAllNoteSlugs();
   return slugs.map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: NotePageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const note = getNoteBySlug(slug);
+  if (!note) return {};
+
+  const title = note.frontmatter.title;
+  const description =
+    excerptFromContent(note.content) || `Note: ${note.frontmatter.title}.`;
+
+  return {
+    title,
+    description,
+    alternates: { canonical: absoluteUrl(`/note/${slug}`) },
+  };
 }
 
 export default async function NotePage({ params }: NotePageProps) {

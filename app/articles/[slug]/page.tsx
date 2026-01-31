@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { createElement } from "react";
 import { notFound } from "next/navigation";
 import { format } from "date-fns";
@@ -8,6 +9,7 @@ import {
   getAllArticleSlugs,
 } from "@/lib/content/articles";
 import { getCustomArticleComponent } from "@/lib/article-components";
+import { absoluteUrl, excerptFromContent } from "@/lib/metadata";
 
 interface ArticlePageProps {
   params: Promise<{ slug: string }>;
@@ -16,6 +18,25 @@ interface ArticlePageProps {
 export async function generateStaticParams() {
   const slugs = getAllArticleSlugs();
   return slugs.map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: ArticlePageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const article = getArticleBySlug(slug);
+  if (!article) return {};
+
+  const title = article.frontmatter.title;
+  const description =
+    excerptFromContent(article.content) ||
+    `Article: ${article.frontmatter.title}.`;
+
+  return {
+    title,
+    description,
+    alternates: { canonical: absoluteUrl(`/articles/${slug}`) },
+  };
 }
 
 export default async function ArticlePage({ params }: ArticlePageProps) {

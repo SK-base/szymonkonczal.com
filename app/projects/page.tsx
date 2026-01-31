@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import { ProjectCard } from "@/components/blog/ProjectCard";
 import { getAllProjects } from "@/lib/content/projects";
+import { absoluteUrl } from "@/lib/metadata";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description: "A collection of my work and side projects.",
+  alternates: { canonical: absoluteUrl("/projects") },
+};
 
 export default function ProjectsPage() {
   const projects = getAllProjects();

@@ -1,3 +1,13 @@
+import type { Metadata } from "next";
+import { absoluteUrl } from "@/lib/metadata";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "I'm a developer, writer, and creator passionate about building meaningful things on the web. Notes, articles, and projects.",
+  alternates: { canonical: absoluteUrl("/about") },
+};
+
 export default function AboutPage() {
   return (
     <div className="container mx-auto px-4 py-12">
