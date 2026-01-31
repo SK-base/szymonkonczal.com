@@ -95,9 +95,9 @@ Actionable task list grouped by area. Use checkboxes to track progress.
 
 ### Technical – Content status
 
-- [ ] **(TASK-023)** Add status field (e.g. DRAFT, PUBLISHED) to note/article frontmatter and Zod schemas.
+- [x] **(TASK-023)** Add status field (e.g. DRAFT, PUBLISHED) to note/article frontmatter and Zod schemas.
   - Files: `lib/types/note.ts`, `lib/types/article.ts`, content MDX frontmatter
-- [ ] **(TASK-024)** Filter to only PUBLISHED in production; allow DRAFT in dev (e.g. via `process.env.NODE_ENV` or env flag).
+- [x] **(TASK-024)** Filter to only PUBLISHED in production; allow DRAFT in dev (e.g. via `process.env.NODE_ENV` or env flag).
   - Files: `lib/content/notes.ts`, `lib/content/articles.ts`
 
 ### Technical – Testing

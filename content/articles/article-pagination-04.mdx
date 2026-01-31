@@ -1,0 +1,17 @@
+---
+title: "Gray Matter: Parse Frontmatter in Node"
+date: "2026-01-21"
+tags: ["node", "markdown", "frontmatter"]
+status: "DRAFT"
+---
+
+Gray-matter parses YAML frontmatter from Markdown (or MDX) files. It returns `{ data, content }` so you can validate `data` with Zod and pass `content` to an MDX compiler.
+
+## Usage
+
+```js
+const { data, content } = matter(fileContents);
+const frontmatter = MySchema.parse(data);
+```
+
+Combine with `fs` to read files from disk and build content pipelines for static sites.

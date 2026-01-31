@@ -24,6 +24,8 @@ describe("notes content", () => {
         expect(note.frontmatter).toHaveProperty("date");
         expect(note.frontmatter).toHaveProperty("tags");
         expect(Array.isArray(note.frontmatter.tags)).toBe(true);
+        expect(note.frontmatter).toHaveProperty("status");
+        expect(["DRAFT", "PUBLISHED"]).toContain(note.frontmatter.status);
       }
     });
 

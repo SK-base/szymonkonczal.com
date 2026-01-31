@@ -1,0 +1,12 @@
+---
+title: "Draft Content and Production Builds"
+date: "2026-01-14"
+tags: ["content", "draft", "workflow"]
+status: "DRAFT"
+---
+
+Use a `status` field in frontmatter: DRAFT or PUBLISHED. In production builds, filter to only PUBLISHED so drafts never ship. In development, show everything so you can preview drafts.
+
+## Implementation
+
+Check `process.env.NODE_ENV === 'production'` in your content loaders. When true, exclude items with `status: 'DRAFT'`. Single-page fetches (e.g. by slug) should return null for drafts in production so those URLs 404.

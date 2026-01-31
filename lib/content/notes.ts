@@ -6,6 +6,16 @@ import { calculateReadingTime } from "@/lib/utils/reading-time";
 
 const notesDirectory = path.join(process.cwd(), "content/notes");
 
+/** In production only PUBLISHED content is visible; in dev/test DRAFT is included. */
+const isProduction = process.env.NODE_ENV === "production";
+
+function filterByStatus<T extends { frontmatter: { status: string } }>(
+  items: T[]
+): T[] {
+  if (!isProduction) return items;
+  return items.filter((item) => item.frontmatter.status === "PUBLISHED");
+}
+
 export function getAllNotes(): Note[] {
   if (!fs.existsSync(notesDirectory)) {
     return [];
@@ -36,12 +46,12 @@ export function getAllNotes(): Note[] {
       return dateB - dateA; // Newest first
     });
 
-  return allNotes;
+  return filterByStatus(allNotes);
 }
 
 export function getNoteBySlug(slug: string): Note | null {
   const filePath = path.join(notesDirectory, `${slug}.mdx`);
-  
+
   if (!fs.existsSync(filePath)) {
     return null;
   }
@@ -50,6 +60,10 @@ export function getNoteBySlug(slug: string): Note | null {
   const { data, content } = matter(fileContents);
 
   const frontmatter = NoteFrontmatterSchema.parse(data);
+  if (isProduction && frontmatter.status === "DRAFT") {
+    return null;
+  }
+
   const readingTime = calculateReadingTime(content);
 
   return {
@@ -66,12 +80,5 @@ export function getLatestNotes(count: number): Note[] {
 }
 
 export function getAllNoteSlugs(): string[] {
-  if (!fs.existsSync(notesDirectory)) {
-    return [];
-  }
-
-  const fileNames = fs.readdirSync(notesDirectory);
-  return fileNames
-    .filter((name) => name.endsWith(".mdx"))
-    .map((name) => name.replace(/\.mdx$/, ""));
+  return getAllNotes().map((note) => note.slug);
 }

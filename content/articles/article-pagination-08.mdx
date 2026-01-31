@@ -1,0 +1,12 @@
+---
+title: "RSS Feeds for Blogs"
+date: "2026-01-17"
+tags: ["rss", "feed", "blog"]
+status: "DRAFT"
+---
+
+RSS lets readers subscribe to your blog. Expose an XML feed with recent posts (e.g. `/feed.xml`). Include title, link, description, and pubDate for each item.
+
+## Generating the Feed
+
+In Next.js, create a Route Handler that returns `Content-Type: application/xml` and build the XML from your content. Use a library like `rss` or build the string manually.

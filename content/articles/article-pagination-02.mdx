@@ -1,0 +1,19 @@
+---
+title: "Zod: Schema Validation in TypeScript"
+date: "2026-01-23"
+tags: ["typescript", "zod", "validation"]
+status: "DRAFT"
+---
+
+Zod lets you define schemas and infer TypeScript types from them. Validate at runtime and get type safety from a single source of truth.
+
+## Basic Usage
+
+```ts
+const UserSchema = z.object({ name: z.string(), age: z.number().optional() });
+type User = z.infer<typeof UserSchema>;
+```
+
+## Parsing and Safe Parse
+
+Use `.parse()` to throw on invalid data, or `.safeParse()` to get a result object. Perfect for API inputs and frontmatter.
