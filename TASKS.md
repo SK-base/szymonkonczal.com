@@ -65,8 +65,8 @@ Actionable task list grouped by area. Use checkboxes to track progress.
 
 ### Content – New pages
 
-- [ ] **(TASK-017)** Add Search page: large search input at top, list of tags with usage count below.
-  - New route: `app/search/page.tsx` (or equivalent); extend `lib/content/tags.ts` for tag usage counts
+- [x] **(TASK-017)** Add Search overlay: magnifier icon in nav bar; on click, blur entire site and show centered large rounded search input; results below (Notes, Articles, Tags, About). Debounce input to limit requests. Search in titles and tags of notes/articles, tag names, About page.
+  - Files: `components/layout/NavBar.tsx`, new `components/layout/SearchOverlay.tsx`, new `app/api/search/route.ts`
 - [ ] **(TASK-018)** Add Philosophy subpage (route + content).
   - New route: `app/philosophy/page.tsx` (or equivalent)
 
@@ -102,14 +102,16 @@ Actionable task list grouped by area. Use checkboxes to track progress.
 
 ### Technical – Testing
 
-- [ ] **(TASK-025)** Add unit tests (e.g. Vitest or Jest) for `lib/content` and key utilities.
+- [x] **(TASK-025)** Add unit tests (e.g. Vitest or Jest) for `lib/content` and key utilities.
+  - Vitest; tests in `lib/utils.test.ts`, `lib/utils/reading-time.test.ts`, `lib/content/*.test.ts`; `pnpm test` runs in CI.
 - [ ] **(TASK-026)** Add E2E tests with Playwright (critical paths: home, note, article, search if implemented).
 
 ### Technical – Analytics and SEO
 
 - [ ] **(TASK-027)** Add Google Analytics (e.g. script in layout or `next/script`).
   - Files: `app/layout.tsx`
-- [ ] **(TASK-028)** Document SEO improvements in a list (meta tags, Open Graph, sitemap, etc.) in TASKS or a dedicated doc.
+- [x] **(TASK-028)** Document SEO improvements in a list (meta tags, Open Graph, sitemap, etc.) in **SEO.md**; see that file for the full checklist.
+  - Categories: meta tags & titles, Open Graph, Twitter Cards, sitemap & robots, JSON-LD, per-page metadata, technical & performance, content & UX. See [SEO.md](SEO.md).
 
 ### Technical – Pipeline and deployment
 

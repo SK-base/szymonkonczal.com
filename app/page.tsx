@@ -1,8 +1,26 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { NoteCard } from "@/components/blog/NoteCard";
 import { ArticleCard } from "@/components/blog/ArticleCard";
 import { getLatestNotes } from "@/lib/content/notes";
 import { getLatestArticles } from "@/lib/content/articles";
+import { absoluteUrl, buildOpenGraph, buildTwitter } from "@/lib/metadata";
+
+const description =
+  "Notes, articles, and projects from my journey. Personal homepage of Szymon Konczal.";
+
+export const metadata: Metadata = {
+  title: "Home",
+  description,
+  alternates: { canonical: absoluteUrl("/") },
+  openGraph: buildOpenGraph({
+    title: "Szymon Konczal",
+    description,
+    url: absoluteUrl("/"),
+    type: "website",
+  }),
+  twitter: buildTwitter({ title: "Szymon Konczal", description }),
+};
 
 export default function HomePage() {
   const latestNotes = getLatestNotes(3);

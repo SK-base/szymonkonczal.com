@@ -1,5 +1,22 @@
+import type { Metadata } from "next";
 import { TagList } from "@/components/blog/TagList";
 import { getAllTags } from "@/lib/content/tags";
+import { absoluteUrl, buildOpenGraph, buildTwitter } from "@/lib/metadata";
+
+const description = "Browse notes and articles by tag.";
+
+export const metadata: Metadata = {
+  title: "Tags",
+  description,
+  alternates: { canonical: absoluteUrl("/tags") },
+  openGraph: buildOpenGraph({
+    title: "Tags | Szymon Konczal",
+    description,
+    url: absoluteUrl("/tags"),
+    type: "website",
+  }),
+  twitter: buildTwitter({ title: "Tags | Szymon Konczal", description }),
+};
 
 export default function TagsIndexPage() {
   const tags = getAllTags();

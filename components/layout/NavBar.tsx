@@ -3,9 +3,10 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu } from "lucide-react";
+import { Menu, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logotype } from "@/components/layout/Logotype";
+import { SearchOverlay } from "@/components/layout/SearchOverlay";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -69,6 +70,7 @@ function NavLinks({
 export function NavBar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const desktopLinkClass = cn(
     "inline-block text-sm font-semibold uppercase text-muted-foreground transition-colors",
@@ -92,20 +94,48 @@ export function NavBar() {
           <Logotype size="md" />
         </Link>
 
-        {/* Desktop nav – hidden on narrow, visible from md */}
-        <div className="hidden md:flex items-center space-x-6">
+        {/* Desktop nav – right-aligned, magnifier first then links */}
+        <div className="hidden md:flex items-end ml-auto space-x-6">
+          <Button
+            variant="ghost"
+            size="icon"
+            aria-label="Open search"
+            className={cn(
+              "text-muted-foreground transition-colors hover:text-accent hover:bg-transparent rounded-none",
+              "border-b-4 border-transparent pb-1 -mb-px",
+              "hover:border-accent pt-2.5 mr-2"
+            )}
+            onClick={() => setSearchOpen(true)}
+          >
+            <Search className="size-5" />
+          </Button>
           <NavLinks pathname={pathname} linkClassName={desktopLinkClass} />
         </div>
 
-        {/* Mobile: hamburger + sheet */}
-        <div className="flex md:hidden items-center">
+        {/* Mobile: search + hamburger – same underline style, no background hover */}
+        <div className="flex items-end gap-1 md:hidden">
+          <Button
+            variant="ghost"
+            size="icon"
+            aria-label="Open search"
+            className={cn(
+              "text-muted-foreground transition-colors hover:text-accent hover:bg-transparent rounded-none",
+              "border-b-4 border-transparent pb-1 -mb-px hover:border-accent"
+            )}
+            onClick={() => setSearchOpen(true)}
+          >
+            <Search className="size-5" />
+          </Button>
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <SheetTrigger asChild>
               <Button
                 variant="ghost"
                 size="icon"
                 aria-label="Open menu"
-                className="text-muted-foreground hover:text-accent"
+                className={cn(
+                  "text-muted-foreground transition-colors hover:text-accent hover:bg-transparent rounded-none",
+                  "border-b-4 border-transparent pb-1 -mb-px hover:border-accent"
+                )}
               >
                 <Menu className="size-6" />
               </Button>
@@ -126,6 +156,8 @@ export function NavBar() {
           </Sheet>
         </div>
       </div>
+
+      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
     </nav>
   );
 }

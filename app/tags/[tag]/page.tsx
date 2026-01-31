@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { NoteCard } from "@/components/blog/NoteCard";
 import { ArticleCard } from "@/components/blog/ArticleCard";
 import { Pagination } from "@/components/blog/Pagination";
@@ -9,6 +10,7 @@ import {
 import type { Note } from "@/lib/types/note";
 import type { Article } from "@/lib/types/article";
 import { notFound } from "next/navigation";
+import { absoluteUrl, buildOpenGraph, buildTwitter } from "@/lib/metadata";
 
 const ITEMS_PER_PAGE = 10;
 
@@ -20,6 +22,47 @@ interface TagPageProps {
 export async function generateStaticParams() {
   const tags = getAllTags();
   return tags.map((tag) => ({ tag: tag.toLowerCase() }));
+}
+
+export async function generateMetadata({
+  params,
+  searchParams,
+}: TagPageProps): Promise<Metadata> {
+  const { tag } = await params;
+  const resolved = await searchParams;
+  const notes = getNotesByTag(tag);
+  const articles = getArticlesByTag(tag);
+  const total = notes.length + articles.length;
+  if (total === 0) return {};
+
+  const title = tag.charAt(0).toUpperCase() + tag.slice(1);
+  const description =
+    total === 1
+      ? `1 note or article tagged with "${tag}".`
+      : `${total} notes and articles tagged with "${tag}".`;
+
+  const query = new URLSearchParams();
+  if (resolved.page) query.set("page", resolved.page);
+  if (resolved.type && resolved.type !== "all") query.set("type", resolved.type);
+  const qs = query.toString();
+  const path = `/tags/${encodeURIComponent(tag)}${qs ? `?${qs}` : ""}`;
+  const canonicalUrl = absoluteUrl(path);
+
+  return {
+    title: `Tag: ${title}`,
+    description,
+    alternates: { canonical: canonicalUrl },
+    openGraph: buildOpenGraph({
+      title: `Tag: ${title} | Szymon Konczal`,
+      description,
+      url: canonicalUrl,
+      type: "website",
+    }),
+    twitter: buildTwitter({
+      title: `Tag: ${title} | Szymon Konczal`,
+      description,
+    }),
+  };
 }
 
 export default async function TagPage({ params, searchParams }: TagPageProps) {

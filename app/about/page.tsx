@@ -1,3 +1,22 @@
+import type { Metadata } from "next";
+import { absoluteUrl, buildOpenGraph, buildTwitter } from "@/lib/metadata";
+
+const description =
+  "I'm a developer, writer, and creator passionate about building meaningful things on the web. Notes, articles, and projects.";
+
+export const metadata: Metadata = {
+  title: "About",
+  description,
+  alternates: { canonical: absoluteUrl("/about") },
+  openGraph: buildOpenGraph({
+    title: "About | Szymon Konczal",
+    description,
+    url: absoluteUrl("/about"),
+    type: "website",
+  }),
+  twitter: buildTwitter({ title: "About | Szymon Konczal", description }),
+};
+
 export default function AboutPage() {
   return (
     <div className="container mx-auto px-4 py-12">

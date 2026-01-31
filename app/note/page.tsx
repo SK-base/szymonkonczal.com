@@ -1,6 +1,24 @@
+import type { Metadata } from "next";
 import { NoteCard } from "@/components/blog/NoteCard";
 import { Pagination } from "@/components/blog/Pagination";
 import { getAllNotes } from "@/lib/content/notes";
+import { absoluteUrl, buildOpenGraph, buildTwitter } from "@/lib/metadata";
+
+const description =
+  "Short, frequent posts—quick ideas, tips, links, and learnings.";
+
+export const metadata: Metadata = {
+  title: "Notes",
+  description,
+  alternates: { canonical: absoluteUrl("/note") },
+  openGraph: buildOpenGraph({
+    title: "Notes | Szymon Konczal",
+    description,
+    url: absoluteUrl("/note"),
+    type: "website",
+  }),
+  twitter: buildTwitter({ title: "Notes | Szymon Konczal", description }),
+};
 
 const ITEMS_PER_PAGE = 10;
 

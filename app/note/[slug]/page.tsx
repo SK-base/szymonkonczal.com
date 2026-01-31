@@ -1,8 +1,10 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { format } from "date-fns";
 import { MDXContent } from "@/lib/mdx";
 import { TagList } from "@/components/blog/TagList";
 import { getNoteBySlug, getAllNoteSlugs } from "@/lib/content/notes";
+import { absoluteUrl, excerptFromContent, buildOpenGraph, buildTwitter } from "@/lib/metadata";
 
 interface NotePageProps {
   params: Promise<{ slug: string }>;
@@ -11,6 +13,37 @@ interface NotePageProps {
 export async function generateStaticParams() {
   const slugs = getAllNoteSlugs();
   return slugs.map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: NotePageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const note = getNoteBySlug(slug);
+  if (!note) return {};
+
+  const title = note.frontmatter.title;
+  const description =
+    excerptFromContent(note.content) || `Note: ${note.frontmatter.title}.`;
+  const canonicalUrl = absoluteUrl(`/note/${slug}`);
+
+  return {
+    title,
+    description,
+    alternates: { canonical: canonicalUrl },
+    openGraph: buildOpenGraph({
+      title: `${title} | Szymon Konczal`,
+      description,
+      url: canonicalUrl,
+      type: "article",
+      image: note.frontmatter.featuredImage ?? undefined,
+    }),
+    twitter: buildTwitter({
+      title: `${title} | Szymon Konczal`,
+      description,
+      image: note.frontmatter.featuredImage ?? undefined,
+    }),
+  };
 }
 
 export default async function NotePage({ params }: NotePageProps) {

@@ -1,5 +1,22 @@
+import type { Metadata } from "next";
 import { ProjectCard } from "@/components/blog/ProjectCard";
 import { getAllProjects } from "@/lib/content/projects";
+import { absoluteUrl, buildOpenGraph, buildTwitter } from "@/lib/metadata";
+
+const description = "A collection of my work and side projects.";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description,
+  alternates: { canonical: absoluteUrl("/projects") },
+  openGraph: buildOpenGraph({
+    title: "Projects | Szymon Konczal",
+    description,
+    url: absoluteUrl("/projects"),
+    type: "website",
+  }),
+  twitter: buildTwitter({ title: "Projects | Szymon Konczal", description }),
+};
 
 export default function ProjectsPage() {
   const projects = getAllProjects();
