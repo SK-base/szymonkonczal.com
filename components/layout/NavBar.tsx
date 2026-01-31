@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { Logotype } from "@/components/layout/Logotype";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -23,10 +24,12 @@ export function NavBar() {
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-border bg-surface/95 backdrop-blur supports-[backdrop-filter]:bg-surface/80">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 max-w-7xl">
-        <Link href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-          <span className="font-serif text-xl font-bold text-foreground">
-            SK
-          </span>
+        <Link
+          href="/"
+          className="flex items-center hover:opacity-80 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-full"
+          aria-label="Home"
+        >
+          <Logotype size="md" />
         </Link>
         <div className="flex items-center space-x-6">
           {navItems.map((item) => {

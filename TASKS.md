@@ -22,7 +22,7 @@ Actionable task list grouped by area. Use checkboxes to track progress.
 
 ### UI – Logotype
 
-- [ ] **(TASK-006)** Logotype in circle: white initials on black circle (light mode), reversed in dark mode; use in NavBar (replace or wrap current “SK” link).
+- [x] **(TASK-006)** Logotype in circle: white initials on black circle (light mode), reversed in dark mode; use in NavBar (replace or wrap current “SK” link).
   - Files: `components/layout/NavBar.tsx`, optionally a `components/layout/Logotype.tsx`
 
 ---
