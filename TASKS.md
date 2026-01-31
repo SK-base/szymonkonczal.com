@@ -8,7 +8,7 @@ Actionable task list grouped by area. Use checkboxes to track progress.
 
 ### UI – Theme and colors
 
-- [ ] **(TASK-001)** Use white/dirty-white background (#FAFAFA) and dark-almost-black (#292727); set main active color to dark green (#204136).
+- [x] **(TASK-001)** Use white/dirty-white background (#FAFAFA) and dark-almost-black (#292727); set main active color to dark green (#204136).
   - Files: `app/globals.css`
 - [ ] **(TASK-002)** Implement dark mode (CSS variables + class on `html` or `body`, persist preference).
   - Files: `app/globals.css`, `app/layout.tsx` (or theme provider)
