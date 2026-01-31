@@ -39,9 +39,11 @@ jobs:
       - name: Build project
         run: pnpm build
 
+      # Deploy only when Vercel secrets are configured (Settings → Secrets and variables → Actions).
+      # Required: VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v25
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push' && secrets.VERCEL_TOKEN != ''
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
