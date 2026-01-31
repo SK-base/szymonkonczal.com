@@ -25,8 +25,8 @@ This document is a checklist of SEO improvements for the personal homepage. Impl
 
 ## 4. Sitemap and robots
 
-- [ ] **Sitemap** – Add `app/sitemap.ts` (Next.js 13+ convention) or static `public/sitemap.xml`; include homepage, about, articles list, note list, projects, tags index, and all article/note/tag URLs; set `lastmod` from content dates where possible.
-- [ ] **robots.txt** – Add `app/robots.ts` or `public/robots.txt`; allow crawlers and reference sitemap URL (e.g. `https://szymonkonczal.com/sitemap.xml`).
+- [x] **Sitemap** – Add `app/sitemap.ts` (Next.js 13+ convention) or static `public/sitemap.xml`; include homepage, about, articles list, note list, projects, tags index, and all article/note/tag URLs; set `lastmod` from content dates where possible.
+- [x] **robots.txt** – Add `app/robots.ts` or `public/robots.txt`; allow crawlers and reference sitemap URL (e.g. `https://szymonkonczal.com/sitemap.xml`).
 
 ## 5. Structured data (JSON-LD)
 
