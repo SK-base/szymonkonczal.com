@@ -63,8 +63,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const toggleTheme = useCallback(() => {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
-  }, [setTheme]);
+    setTheme(theme === "dark" ? "light" : "dark");
+  }, [theme, setTheme]);
 
   useEffect(() => {
     if (!mounted) return;
