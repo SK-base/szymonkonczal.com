@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { absoluteUrl, buildOpenGraph, buildTwitter } from "@/lib/metadata";
 import Link from "next/link";
+import { TagList } from "@/components/blog/TagList";
 
 const description =
   "I'm a developer, writer, and creator passionate about building meaningful things on the web. Notes, articles, and projects.";
@@ -50,6 +51,32 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
+        </div>
+        <div className="text-lg text-muted-foreground mb-8 flex flex-wrap items-baseline gap-x-2 gap-y-2">
+          <span>Technology I&apos;m working with (in no particular order):</span>
+          <TagList
+            tags={[
+              "JavaScript",
+              "TypeScript",
+              "React",
+              "Node.js",
+              "Next.js",
+              "Vercel",
+              "Cursor",
+              "Tailwind",
+              "Shadcn UI",
+              "Agile",
+              "Software Team",
+              "Startups",
+              "SaaS",
+              "Cloud",
+              "Artificial Intelligence",
+              "GenAI",
+              "LLMs",
+              "Databases",
+            ]}
+            className="[&_a]:px-3 [&_a]:py-1.5 [&_a]:text-sm [&_a]:hover:text-accent"
+          />
         </div>
         <h2 className="font-serif text-3xl font-bold mb-4">Stay in touch</h2>
         <p className="text-lg text-muted-foreground mb-4">
