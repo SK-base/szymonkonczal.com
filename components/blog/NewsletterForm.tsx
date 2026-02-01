@@ -227,9 +227,23 @@ function NewsletterFormInner({
         )}
       </div>
       {status === "error" && errorMessage && (
-        <p className="mt-2 text-sm text-destructive" role="alert">
-          {errorMessage}
-        </p>
+        <div
+          className="mt-2 flex items-center gap-2 rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-1.5 text-sm text-destructive"
+          role="alert"
+        >
+          <span className="min-w-0 flex-1">{errorMessage}</span>
+          <button
+            type="button"
+            onClick={() => {
+              setErrorMessage("");
+              setStatus("idle");
+            }}
+            className="shrink-0 flex min-w-9 items-center justify-center rounded px-2 py-0.5 text-destructive hover:bg-destructive/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            aria-label="Dismiss error"
+          >
+            <span aria-hidden>×</span>
+          </button>
+        </div>
       )}
     </div>
   );
