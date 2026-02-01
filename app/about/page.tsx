@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { absoluteUrl, buildOpenGraph, buildTwitter } from "@/lib/metadata";
 import Link from "next/link";
 
@@ -25,8 +26,15 @@ export default function AboutPage() {
         <h1 className="font-serif text-5xl font-bold mb-8">About</h1>
         
         <div className="flex flex-col md:flex-row gap-8 items-start mb-8">
-          <div className="relative w-48 h-48 md:w-64 md:h-64 flex-shrink-0 bg-surface rounded-lg flex items-center justify-center">
-            <span className="text-muted-foreground text-sm">Photo placeholder</span>
+          <div className="group relative w-56 h-80 md:w-72 md:h-96 shrink-0 rounded-lg overflow-hidden bg-surface">
+            <Image
+              src="/images/about_szymon.jpg"
+              alt="Szymon Konczal"
+              fill
+              className="object-cover object-[center_18%] scale-110 transition-transform duration-500 ease-out group-hover:scale-125"
+              sizes="(max-width: 768px) 14rem, 18rem"
+              priority
+            />
           </div>
           
           <div className="flex-1">
