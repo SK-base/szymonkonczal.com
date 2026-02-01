@@ -46,7 +46,7 @@ export default function HomePage() {
               priority
             />
           </Link>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground flex-1">
             Hello 👋, my name is <Link href="/about" className="text-accent hover:text-accent-dark underline decoration-2 decoration-accent underline-offset-2">Szymon!</Link> Welcome to my website! Read my articles, notes and see projects from my journey.
           </p>
         </section>

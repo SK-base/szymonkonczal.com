@@ -3,6 +3,7 @@ import Image from "next/image";
 import { absoluteUrl, buildOpenGraph, buildTwitter } from "@/lib/metadata";
 import Link from "next/link";
 import { TagList } from "@/components/blog/TagList";
+import { NewsletterForm } from "@/components/blog/NewsletterForm";
 
 const description =
   "I'm a developer, writer, and creator passionate about building meaningful things on the web. Notes, articles, and projects.";
@@ -80,7 +81,7 @@ export default function AboutPage() {
         </div>
         <h2 className="font-serif text-3xl font-bold mb-4">Stay in touch</h2>
         <p className="text-lg text-muted-foreground mb-4">
-          Let&apos;s stay in touch. If you want to stay up to date and not miss any of my updates, join my <Link href="/mailing-list" className="text-accent hover:text-accent-dark underline decoration-2 decoration-accent underline-offset-2">mailing list</Link> or follow me on social media:
+          Let&apos;s stay in touch. If you want to stay up to date and not miss any of my updates, join my mailing list or follow me on social media:
         </p>
         <ul className="list-disc list-inside text-lg text-muted-foreground mb-4">
           <li><Link href="https://x.com/szymonkonczal" className="text-accent hover:text-accent-dark underline decoration-2 decoration-accent underline-offset-2">X (Twitter)</Link></li>
@@ -88,6 +89,14 @@ export default function AboutPage() {
           <li><Link href="https://github.com/archon-" className="text-accent hover:text-accent-dark underline decoration-2 decoration-accent underline-offset-2">GitHub</Link></li>
           <li><Link href="https://instagram.com/szymonkonczal" className="text-accent hover:text-accent-dark underline decoration-2 decoration-accent underline-offset-2">Instagram</Link></li>
         </ul>
+        <div className="mb-4 w-full">
+          <NewsletterForm
+            showName
+            inline
+            tagline="I occasionally write about exciting things I'm doing, zero fluff, no BS!"
+            metadata={{ source: "szymonkonczalcom", page: "about" }}
+          />
+        </div>
         <h2 className="font-serif text-3xl font-bold mb-4">Contact</h2>
         <p className="text-lg text-muted-foreground mb-4">
           If you want to reach out - drop me an email on <Link href="mailto:hello@szymonkonczal.com" className="text-accent hover:text-accent-dark underline decoration-2 decoration-accent underline-offset-2">hello@szymonkonczal.com</Link>.

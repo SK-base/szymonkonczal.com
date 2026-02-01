@@ -78,7 +78,7 @@ Actionable task list grouped by area. Use checkboxes to track progress.
 
 - [ ] **(TASK-019)** Add RSS feed (route + feed generation for notes and articles).
   - New route: e.g. `app/feed.xml/route.ts` or `app/rss/route.ts`
-- [ ] **(TASK-020)** Integrate MailerLite (form/embed or API) where needed (e.g. About, optional elsewhere).
+- [x] **(TASK-020)** Integrate Plunk (useplunk.com) (form/embed or API) where needed (e.g. About, optional elsewhere).
 
 ### Content – Notes
 
