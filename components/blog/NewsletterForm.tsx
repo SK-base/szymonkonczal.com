@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { Suspense, useState, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -38,7 +38,29 @@ function getUtmFromSearchParams(searchParams: URLSearchParams): Record<string, s
   return out;
 }
 
-export function NewsletterForm({
+function NewsletterFormFallback({
+  inline = false,
+  tagline,
+  className,
+}: Pick<NewsletterFormProps, "inline" | "tagline" | "className">) {
+  const withBox = Boolean(tagline && inline);
+  return (
+    <div className={className}>
+      <div className={cn(withBox && "rounded-lg border border-border p-4")}>
+        {withBox ? (
+          <div className="flex flex-col gap-3">
+            <div className="min-w-0 flex flex-nowrap items-center gap-2 h-10" />
+            <p className="text-sm text-muted-foreground">{tagline}</p>
+          </div>
+        ) : (
+          <div className="flex flex-col gap-2 max-w-sm h-[88px]" />
+        )}
+      </div>
+    </div>
+  );
+}
+
+function NewsletterFormInner({
   showName = false,
   inline = false,
   tagline,
@@ -210,5 +232,13 @@ export function NewsletterForm({
         </p>
       )}
     </div>
+  );
+}
+
+export function NewsletterForm(props: NewsletterFormProps) {
+  return (
+    <Suspense fallback={<NewsletterFormFallback {...props} />}>
+      <NewsletterFormInner {...props} />
+    </Suspense>
   );
 }
