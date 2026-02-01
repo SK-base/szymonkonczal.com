@@ -30,9 +30,9 @@ export default function HomePage() {
     <div className="container mx-auto px-4 py-12">
       <div className="max-w-4xl mx-auto">
         <section className="mb-16">
-          <h1 className="font-serif text-5xl font-bold mb-4">Welcome</h1>
+          {/* <h1 className="font-serif text-5xl font-bold mb-4">Welcome</h1> */}
           <p className="text-lg text-muted-foreground">
-            Notes, articles, and projects from my journey.
+            Hello 👋, my name is <Link href="/about" className="text-accent hover:text-accent-dark underline decoration-2 decoration-accent underline-offset-2">Szymon!</Link> Welcome to my website! Read my articles, notes and see projects from my journey.
           </p>
         </section>
 
