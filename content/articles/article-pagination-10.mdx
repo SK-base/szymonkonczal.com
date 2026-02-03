@@ -1,0 +1,12 @@
+---
+title: "CI/CD with GitHub Actions"
+date: "2026-01-15"
+tags: ["ci", "github-actions", "deploy"]
+status: "DRAFT"
+---
+
+Run typecheck, lint, and tests on every push or PR. Use a workflow that installs deps, runs checks, and optionally deploys. Store secrets in GitHub and pass them to Vercel or other providers.
+
+## Example Steps
+
+Checkout, setup Node/pnpm, install, run `pnpm exec tsc --noEmit`, `pnpm lint`, `pnpm test`, `pnpm build`. Then deploy only on main if all pass.

@@ -1,0 +1,12 @@
+---
+title: "Open Graph and Twitter Cards"
+date: "2026-01-22"
+tags: ["seo", "meta", "social"]
+status: "DRAFT"
+---
+
+When you share a link, platforms fetch Open Graph and Twitter Card meta tags to build rich previews. Set `og:title`, `og:description`, `og:image`, and optionally `twitter:card` for consistent previews.
+
+## Next.js Metadata API
+
+Use the `metadata` export or `generateMetadata` in App Router. Next.js will emit the right tags. Use absolute URLs for images so crawlers can resolve them.

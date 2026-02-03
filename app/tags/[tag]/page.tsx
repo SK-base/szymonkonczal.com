@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { NoteCard } from "@/components/blog/NoteCard";
 import { ArticleCard } from "@/components/blog/ArticleCard";
 import { Pagination } from "@/components/blog/Pagination";
@@ -9,7 +10,6 @@ import {
 } from "@/lib/content/tags";
 import type { Note } from "@/lib/types/note";
 import type { Article } from "@/lib/types/article";
-import { notFound } from "next/navigation";
 import { absoluteUrl, buildOpenGraph, buildTwitter } from "@/lib/metadata";
 
 const ITEMS_PER_PAGE = 10;
@@ -33,13 +33,14 @@ export async function generateMetadata({
   const notes = getNotesByTag(tag);
   const articles = getArticlesByTag(tag);
   const total = notes.length + articles.length;
-  if (total === 0) return {};
 
   const title = tag.charAt(0).toUpperCase() + tag.slice(1);
   const description =
-    total === 1
-      ? `1 note or article tagged with "${tag}".`
-      : `${total} notes and articles tagged with "${tag}".`;
+    total === 0
+      ? `No content tagged with "${tag}".`
+      : total === 1
+        ? `1 note or article tagged with "${tag}".`
+        : `${total} notes and articles tagged with "${tag}".`;
 
   const query = new URLSearchParams();
   if (resolved.page) query.set("page", resolved.page);
@@ -106,7 +107,28 @@ export default async function TagPage({ params, searchParams }: TagPageProps) {
   }
 
   if (items.length === 0) {
-    notFound();
+    return (
+      <div className="container mx-auto px-4 py-12">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="font-serif text-5xl font-bold mb-4">
+            Tag: {tag}
+          </h1>
+          <p className="text-lg text-muted-foreground mb-8">
+            No notes or articles tagged with &quot;{tag}&quot;.
+          </p>
+          <p className="text-muted-foreground">
+            <Link href="/tags" className="underline hover:text-foreground">
+              Browse all tags
+            </Link>{" "}
+            or go back to the{" "}
+            <Link href="/" className="underline hover:text-foreground">
+              homepage
+            </Link>
+            .
+          </p>
+        </div>
+      </div>
+    );
   }
 
   const totalPages = Math.ceil(items.length / ITEMS_PER_PAGE);

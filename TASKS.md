@@ -78,7 +78,7 @@ Actionable task list grouped by area. Use checkboxes to track progress.
 
 - [ ] **(TASK-019)** Add RSS feed (route + feed generation for notes and articles).
   - New route: e.g. `app/feed.xml/route.ts` or `app/rss/route.ts`
-- [ ] **(TASK-020)** Integrate MailerLite (form/embed or API) where needed (e.g. About, optional elsewhere).
+- [x] **(TASK-020)** Integrate Plunk (useplunk.com) (form/embed or API) where needed (e.g. About, optional elsewhere).
 
 ### Content – Notes
 
@@ -95,9 +95,9 @@ Actionable task list grouped by area. Use checkboxes to track progress.
 
 ### Technical – Content status
 
-- [ ] **(TASK-023)** Add status field (e.g. DRAFT, PUBLISHED) to note/article frontmatter and Zod schemas.
+- [x] **(TASK-023)** Add status field (e.g. DRAFT, PUBLISHED) to note/article frontmatter and Zod schemas.
   - Files: `lib/types/note.ts`, `lib/types/article.ts`, content MDX frontmatter
-- [ ] **(TASK-024)** Filter to only PUBLISHED in production; allow DRAFT in dev (e.g. via `process.env.NODE_ENV` or env flag).
+- [x] **(TASK-024)** Filter to only PUBLISHED in production; allow DRAFT in dev (e.g. via `process.env.NODE_ENV` or env flag).
   - Files: `lib/content/notes.ts`, `lib/content/articles.ts`
 
 ### Technical – Testing

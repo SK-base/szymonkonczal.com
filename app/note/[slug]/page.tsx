@@ -68,12 +68,15 @@ export default async function NotePage({ params }: NotePageProps) {
             <span>•</span>
             <span>{note.readingTime} min read</span>
           </div>
-          {note.frontmatter.tags.length > 0 && (
-            <TagList tags={note.frontmatter.tags} />
-          )}
         </header>
 
         <MDXContent source={note.content} />
+        {note.frontmatter.tags.length > 0 && (
+          <div className="flex flex-wrap items-center gap-2">
+            <span>Tags:</span>
+            <TagList tags={note.frontmatter.tags} />
+          </div>
+        )}
       </article>
     </div>
   );

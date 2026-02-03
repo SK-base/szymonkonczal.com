@@ -1,0 +1,12 @@
+---
+title: "Deploying Next.js on Vercel"
+date: "2026-01-18"
+tags: ["vercel", "deployment", "nextjs"]
+status: "DRAFT"
+---
+
+Vercel is built for Next.js. Connect your repo, set env vars, and get previews per branch. Static pages are served from the edge; server code runs in serverless functions.
+
+## Build and Output
+
+Use the default build; Vercel detects Next.js. For static export, set `output: 'export'` in next.config. Otherwise you get hybrid static and dynamic routes.

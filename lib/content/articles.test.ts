@@ -26,6 +26,8 @@ describe("articles content", () => {
         expect(article.frontmatter).toHaveProperty("date");
         expect(article.frontmatter).toHaveProperty("tags");
         expect(Array.isArray(article.frontmatter.tags)).toBe(true);
+        expect(article.frontmatter).toHaveProperty("status");
+        expect(["DRAFT", "PUBLISHED"]).toContain(article.frontmatter.status);
       }
     });
 

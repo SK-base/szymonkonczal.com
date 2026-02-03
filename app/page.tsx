@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { NoteCard } from "@/components/blog/NoteCard";
 import { ArticleCard } from "@/components/blog/ArticleCard";
@@ -29,10 +30,24 @@ export default function HomePage() {
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="max-w-4xl mx-auto">
-        <section className="mb-16">
-          <h1 className="font-serif text-5xl font-bold mb-4">Welcome</h1>
-          <p className="text-lg text-muted-foreground">
-            Notes, articles, and projects from my journey.
+        <section className="mb-16 flex flex-col sm:flex-row items-center sm:items-start gap-6">
+          <Link
+            href="/about"
+            className="shrink-0 rounded-full border-4 border-primary overflow-hidden ring-2 ring-primary/20 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+            aria-label="Go to about page"
+          >
+            <Image
+              src="/images/profile-photo.jpg"
+              alt="Szymon Konczal"
+              width={80}
+              height={80}
+              sizes="(max-width: 640px) 56px, 64px"
+              className="rounded-full object-cover w-14 h-14 sm:w-16 sm:h-16"
+              priority
+            />
+          </Link>
+          <p className="text-lg text-muted-foreground flex-1">
+            Hello 👋, my name is <Link href="/about" className="text-accent hover:text-accent-dark underline decoration-2 decoration-accent underline-offset-2">Szymon!</Link> Welcome to my website! Read my articles, notes and see projects from my journey.
           </p>
         </section>
 

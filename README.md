@@ -112,6 +112,25 @@ Edit `content/projects.json`:
 }
 ```
 
+## Newsletter (Plunk)
+
+The site uses [Plunk](https://useplunk.com) for the mailing list. Flow:
+
+1. User enters email (and optionally name on the About page) and clicks Subscribe.
+2. The **API route** `app/api/subscribe/route.ts` receives the request, validates the email, checks the honeypot (anti-bot), then:
+   - Calls Plunk **Track** to create/update the contact and mark them subscribed.
+   - Calls Plunk **Send** to send a welcome email to the same address.
+3. The API key is **server-side only**; it is never exposed to the client.
+
+### Setting `PLUNK_API_KEY` on Vercel
+
+1. In Vercel: open your project → **Settings** → **Environment Variables**.
+2. Add a variable: name `PLUNK_API_KEY`, value = your Plunk secret API key (from [Plunk dashboard](https://app.useplunk.com) → Project → API Keys).
+3. Choose the environment(s) (Production, Preview) and save.
+4. Redeploy so the new variable is applied.
+
+For local development, copy `.env.example` to `.env` and set `PLUNK_API_KEY` there.
+
 ## Deployment
 
 ### Vercel (Recommended)

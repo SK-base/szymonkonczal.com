@@ -7,6 +7,16 @@ import { CUSTOM_ARTICLE_SLUGS } from "@/lib/article-components";
 
 const articlesDirectory = path.join(process.cwd(), "content/articles");
 
+/** In production only PUBLISHED content is visible; in dev/test DRAFT is included. */
+const isProduction = process.env.NODE_ENV === "production";
+
+function filterByStatus<T extends { frontmatter: { status: string } }>(
+  items: T[]
+): T[] {
+  if (!isProduction) return items;
+  return items.filter((item) => item.frontmatter.status === "PUBLISHED");
+}
+
 export function getAllArticles(): Article[] {
   if (!fs.existsSync(articlesDirectory)) {
     return [];
@@ -39,12 +49,12 @@ export function getAllArticles(): Article[] {
       return dateB - dateA; // Newest first
     });
 
-  return allArticles;
+  return filterByStatus(allArticles);
 }
 
 export function getArticleBySlug(slug: string): Article | null {
   const filePath = path.join(articlesDirectory, `${slug}.mdx`);
-  
+
   if (!fs.existsSync(filePath)) {
     return null;
   }
@@ -53,6 +63,10 @@ export function getArticleBySlug(slug: string): Article | null {
   const { data, content } = matter(fileContents);
 
   const frontmatter = ArticleFrontmatterSchema.parse(data);
+  if (isProduction && frontmatter.status === "DRAFT") {
+    return null;
+  }
+
   const readingTime = calculateReadingTime(content);
   const hasCustomComponent = CUSTOM_ARTICLE_SLUGS.includes(slug);
 
@@ -71,14 +85,7 @@ export function getLatestArticles(count: number): Article[] {
 }
 
 export function getAllArticleSlugs(): string[] {
-  if (!fs.existsSync(articlesDirectory)) {
-    return [];
-  }
-
-  const fileNames = fs.readdirSync(articlesDirectory);
-  return fileNames
-    .filter((name) => name.endsWith(".mdx"))
-    .map((name) => name.replace(/\.mdx$/, ""));
+  return getAllArticles().map((article) => article.slug);
 }
 
 // This isn't used anywhere yet. It will be useful on tags page.

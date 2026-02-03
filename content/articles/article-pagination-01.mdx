@@ -1,0 +1,18 @@
+---
+title: "Introduction to React Server Components"
+date: "2026-01-24"
+tags: ["react", "nextjs", "server-components"]
+status: "DRAFT"
+---
+
+Server Components run only on the server. They reduce client bundle size and can fetch data directly. No `useState` or `useEffect`—they're not interactive by default.
+
+## Why Server Components?
+
+- **Smaller bundles**: Only client components and their dependencies ship to the browser.
+- **Direct data access**: No need for API routes for internal data.
+- **Security**: Keep secrets on the server; they never reach the client.
+
+## When to Use Client Components
+
+Use `"use client"` when you need interactivity: event handlers, hooks, or browser APIs. Compose server and client components freely.
